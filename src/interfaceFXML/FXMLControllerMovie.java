@@ -8,15 +8,12 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,15 +22,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.java.CastMember;
@@ -68,7 +67,8 @@ public class FXMLControllerMovie {
 	@FXML private Text budget;
 	@FXML private Text productionCompany;
 	@FXML private ComboBox rate;
-	@FXML private BarChart barRatings;
+	@FXML private BarChart<String, Number> barRatings;
+	@FXML private HBox statisticPart;
 	@FXML private Text allAll;
 	@FXML private Text all18;
 	@FXML private Text all1845;
@@ -83,14 +83,10 @@ public class FXMLControllerMovie {
 	@FXML private Text female45;
 	@FXML private Button profile;
 	@FXML private Button deleteFilmButton;
+	@FXML private ScrollBar scrollBarOverview;
 	
-	private double runtimeDouble;
 	private double overallMeanRatingDouble;
 	private double recentMeanRatingDouble;
-	private double budgetDouble;
-	private Map<String,Double> barData;
-	private Map<String,Double> barDemographicData;
-	
 	public FXMLControllerMovie() {
 		super();
 	}
@@ -202,16 +198,48 @@ public class FXMLControllerMovie {
 		
 		Rating new_rate = new Rating(user.getId(), film.getId(), rate_value, date_m, age, user.getGender());
 		Rating existing_rate = CinemaSpaceArchive.getRating(film, user);
-		if (existing_rate != null) {
+		if (existing_rate != null && new_rate != null) {
 			CinemaSpaceArchive.updateRating(new_rate);
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Information Dialogue");
+			alert.setHeaderText(null);
+			alert.setContentText("Your rating has been updated.");
+			alert.showAndWait();
+		}
+		else if(new_rate != null){
+			CinemaSpaceArchive.addRating(new_rate);
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Information Dialogue");
+			alert.setHeaderText(null);
+			alert.setContentText("Your rating has been added.");
+			alert.showAndWait();
 		}
 		else {
-			CinemaSpaceArchive.addRating(new_rate);
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialogue");
+			alert.setHeaderText(null);
+			alert.setContentText("A problem has ocured during the rating. Please try again !");
+			alert.showAndWait();
 		}
 	}
 	
 	@FXML protected void handleConfirmDeleteFilmsButtonAction (ActionEvent event) {
-		System.out.println("clicked");
+		if(film != null) {
+			if(CinemaSpaceArchive.deleteFilm(film)) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Information Dialogue");
+				alert.setHeaderText(null);
+				alert.setContentText("The film has been correctly deleted.");
+				alert.showAndWait();
+			}
+			else {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Dialogue");
+				alert.setHeaderText(null);
+				alert.setContentText("A problem has ocured during the deleting. Please try again !");
+				alert.showAndWait();
+			}
+		}
 	}
 	
 	public void initUser(User user) {
@@ -219,16 +247,18 @@ public class FXMLControllerMovie {
 		
 		if(user.getAdministrator()) {
 			profile.setText("Add film(s)");	
-			Rating existing_rate = CinemaSpaceArchive.getRating(film, user);
-			if (existing_rate != null) {
-				String text_rate = String.valueOf(existing_rate.getRating()) + "/5";
-				rate.setPromptText(text_rate);
-			}
 			deleteFilmButton.setVisible(true);
 			deleteFilmButton.setDisable(false);
 		}
+		
+		Rating existing_rate = CinemaSpaceArchive.getRating(film, user);
+		if (existing_rate != null) {
+			String text_rate = String.valueOf(existing_rate.getRating()) + "/5";
+			rate.setPromptText(text_rate);
+		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void initFilm(Film film) {
 		this.film = film;	
 		
@@ -327,7 +357,10 @@ public class FXMLControllerMovie {
 			if (i == 0) {
 				companies += list_company.get(i);
 			}
-			else {
+			else if (i == 4) {
+				companies += " ...";
+			}
+			else if (i < 4 && i != 0){
 				companies += " | " + list_company.get(i);
 			}
 		}		
@@ -338,26 +371,36 @@ public class FXMLControllerMovie {
 		overallMeanRating.setText(String.format("%.2f", overallMeanRatingDouble) + "/5");
 		
 		//Recent Mean rating
+		
 		recentMeanRatingDouble = CinemaSpaceArchive.generateRecentMeanRating(film);
-		recentMeanRating.setText(String.format("%.2f", recentMeanRatingDouble) + "/5");
+		if(recentMeanRatingDouble == -1) {
+			recentMeanRating.setText( "None");
+		}
+		else {
+			recentMeanRating.setText(String.format("%.2f", recentMeanRatingDouble) + "/5");
+		}
 		
 		Map<String, Integer> barData = CinemaSpaceArchive.generateDistributionOfRatings(film);
-		ObservableList<XYChart.Data<String, Integer>> observableStatisticsList = FXCollections.synchronizedObservableList(FXCollections.observableList(new ArrayList<XYChart.Data<String, Integer>>()));
-		observableStatisticsList.add(new XYChart.Data<>("0.0", barData.get("0.0")));
-		observableStatisticsList.add(new XYChart.Data<>("0.5", barData.get("0.5")));
-		observableStatisticsList.add(new XYChart.Data<>("1.0", barData.get("1.0")));
-		observableStatisticsList.add(new XYChart.Data<>("1.5", barData.get("1.5")));
-		observableStatisticsList.add(new XYChart.Data<>("2.0", barData.get("2.0")));
-		observableStatisticsList.add(new XYChart.Data<>("2.5", barData.get("2.5")));
-		observableStatisticsList.add(new XYChart.Data<>("3.0", barData.get("3.0")));
-		observableStatisticsList.add(new XYChart.Data<>("3.5", barData.get("3.5")));
-		observableStatisticsList.add(new XYChart.Data<>("4.0", barData.get("4.0")));
-		observableStatisticsList.add(new XYChart.Data<>("4.5", barData.get("4.5")));
-		observableStatisticsList.add(new XYChart.Data<>("5.0", barData.get("5.0")));
-		XYChart.Series<String, Integer> serie = new XYChart.Series<String, Integer>();
-		serie.getData().addAll(observableStatisticsList);
-		barRatings.getData().add(serie);
+		NumberAxis yAxis = new NumberAxis();
+		CategoryAxis xAxis = new CategoryAxis();
+		barRatings = new BarChart<String,Number>(xAxis,yAxis);
+		xAxis.setLabel("Ratings");
+
+		XYChart.Series<String, Number> serie = new XYChart.Series<String, Number>();
+		serie.getData().add(new XYChart.Data<String,Number>("0.0", (Number)barData.get("0.0")));
+		serie.getData().add(new XYChart.Data<String,Number>("0.5", (Number)barData.get("0.5")));
+		serie.getData().add(new XYChart.Data<String,Number>("1.0", (Number)barData.get("1.0")));
+		serie.getData().add(new XYChart.Data<String,Number>("1.5", (Number)barData.get("1.5")));
+		serie.getData().add(new XYChart.Data<String,Number>("2.0", (Number)barData.get("2.0")));
+		serie.getData().add(new XYChart.Data<String,Number>("2.5", (Number)barData.get("2.5")));
+		serie.getData().add(new XYChart.Data<String,Number>("3.0", (Number)barData.get("3.0")));
+		serie.getData().add(new XYChart.Data<String,Number>("3.5", (Number)barData.get("3.5")));
+		serie.getData().add(new XYChart.Data<String,Number>("4.0", (Number)barData.get("4.0")));
+		serie.getData().add(new XYChart.Data<String,Number>("4.5", (Number)barData.get("4.5")));
+		serie.getData().add(new XYChart.Data<String,Number>("5.0", (Number)barData.get("5.0")));
 		
+		barRatings.getData().addAll(serie);
+		statisticPart.getChildren().add(barRatings);
 		Map<String, Double> barDemographicData = CinemaSpaceArchive.generateDistributionOfRatingsByDemographic(film);
 		allAll.setText(String.format("%.2f", film.getAverageRating()) + "/5");
 		all18.setText(String.format("%.2f", barDemographicData.get("All_18")) + "/5");
