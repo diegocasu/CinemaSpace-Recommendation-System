@@ -212,7 +212,6 @@ public class CinemaSpaceArchive {
 	
  	public static void openConnection(String addressDBMS, String portDBMS) {
  		databaseAddress += addressDBMS + ":" + portDBMS;
- 		System.out.println(databaseAddress);
  		
 		clientConnection = MongoClients.create(databaseAddress);
 		cinemaSpaceDatabase = clientConnection.getDatabase("CinemaSpace");
@@ -320,8 +319,8 @@ public class CinemaSpaceArchive {
 		MongoCollection<Document> filmCollection = cinemaSpaceDatabase.getCollection("Film");
 		List<Film> filmSearch = new ArrayList<>();
 		
-		List<Bson> aggregationQuery = Arrays.asList(Aggregates.match(Filters.gte("number_of_ratings", 1000)),
-													Aggregates.sort(Filters.eq("average_rating", -1)),
+		List<Bson> aggregationQuery = Arrays.asList(Aggregates.sort(Filters.eq("average_rating", -1)),
+													Aggregates.match(Filters.gte("number_of_ratings", 1000)),
 													Aggregates.limit(50));
 		
 		try(MongoCursor<Document> cursor = filmCollection.aggregate(aggregationQuery).iterator()) {
