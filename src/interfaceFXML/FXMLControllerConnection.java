@@ -1,7 +1,6 @@
 package interfaceFXML;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
@@ -80,17 +79,15 @@ public class FXMLControllerConnection {
 			dateOfBirth = dateOfBirthSignUp.getText();
 			email = emailSignUp.getText();
 			if(isValidDateOfBirth(dateOfBirth) && isValidEmail(email)) {
-				/*if(maleSignUp.isSelected()) {
-					user = new User(usernameSignUp.getText(), emailSignUp.getText(), dateOfBirthSignUp.getText(), "Male");
+				if(maleSignUp.isSelected()) {
+					user = new User(usernameSignUp.getText(), passwordSignUp.getText(), emailSignUp.getText(), dateOfBirthSignUp.getText(), "Male", false);
 				}
 				else if(femaleSignUp.isSelected()) {
-					user = new User(usernameSignUp.getText(), emailSignUp.getText(), dateOfBirthSignUp.getText(), "Female");
-				}*/
+					user = new User(usernameSignUp.getText(), passwordSignUp.getText(), emailSignUp.getText(), dateOfBirthSignUp.getText(), "Female", false);
+				}
 				
-				//if(user != null) {
-					//if(addUser(user)) {
-						//FXMLControllerHome controller = loader.<FXMLControllerGome>getController();
-						//controller.initData(user);
+				if(user != null) {
+					if(CinemaSpaceArchive.addUser(user)) {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Information Dialogue");
 						alert.setHeaderText(null);
@@ -101,7 +98,7 @@ public class FXMLControllerConnection {
 						passwordSignUp.setText("");
 						dateOfBirthSignUp.setText("");
 						user = null;
-					/*}
+					}
 					else {
 						Alert alert = new Alert(AlertType.ERROR);
 						alert.setTitle("Error Dialogue");
@@ -109,7 +106,7 @@ public class FXMLControllerConnection {
 						alert.setContentText("A problem occurred during the creation of your account. Please try again !");
 						alert.showAndWait();
 					}
-				}*/
+				}
 			}
 			else if (!isValidDateOfBirth(dateOfBirth)) {
 				Alert alert = new Alert(AlertType.ERROR);
@@ -184,7 +181,7 @@ public class FXMLControllerConnection {
 	
 	public static boolean isValidDateOfBirth(String dateOfBirth)
     {
-        String emailRegex = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{2}$";
+        String emailRegex = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$";
 
         Pattern pat = Pattern.compile(emailRegex);
         if (dateOfBirth == null)
