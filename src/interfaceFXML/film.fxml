@@ -94,7 +94,11 @@
                             <Text fx:id="date" strokeType="OUTSIDE" strokeWidth="0.0" text="date" HBox.margin="$x3" />
                           </children>
                         </HBox>
-                        <Text fx:id="overview" strokeType="OUTSIDE" strokeWidth="0.0" text="overview" VBox.margin="$x3"/>
+                        <ScrollPane id="ScrollPane" hbarPolicy="NEVER" prefHeight="88.0" prefViewportHeight="19.951171875" prefViewportWidth="58.53515625" prefWidth="415.0">
+                          <content>
+                            <Text fx:id="overview" strokeType="OUTSIDE" strokeWidth="0.0" text="overview" textAlignment="JUSTIFY" />
+                          </content>
+                        </ScrollPane>
                       </children>
                     </VBox>
                     <VBox fx:id="meanRatings" prefHeight="239.0" prefWidth="222.0">
@@ -272,17 +276,6 @@
                 </HBox>
                 <HBox id="statistic_part" fx:id="statisticPart" prefHeight="225.0" prefWidth="837.0" style="-fx-alignment:center;">
                   <children>
-                    <BarChart fx:id="barRatings" alternativeColumnFillVisible="false" barGap="0.0" categoryGap="5.0" horizontalGridLinesVisible="true" horizontalZeroLineVisible="true" legendSide="LEFT" legendVisible="false" minHeight="136.0" prefHeight="136.0" prefWidth="361.0">
-                      <xAxis>
-                        <CategoryAxis fx:id="ratingDistribution" label="Ratings" side="BOTTOM" />
-                      </xAxis>
-                      <yAxis>
-                        <NumberAxis fx:id="numberRatings" autoRanging="true" side="LEFT" tickLabelsVisible="false" upperBound="200.0" />
-                      </yAxis>
-                      <HBox.margin>
-                        <Insets bottom="10.0" right="20.0" />
-                      </HBox.margin>
-                    </BarChart>
                     <GridPane id="array_demographic" fx:id="arrayDemographic" alignment="CENTER" gridLinesVisible="true" prefHeight="199.0" prefWidth="352.0" style="">
                       <children>
                         <Text id="all_age" fx:id="allAge" scaleX="1.0" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" style="" text="All" textAlignment="CENTER" textOrigin="CENTER" x="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
