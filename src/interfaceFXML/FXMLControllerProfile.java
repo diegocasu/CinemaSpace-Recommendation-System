@@ -1,9 +1,14 @@
 package interfaceFXML;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Pattern;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,10 +16,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import main.java.CinemaSpaceArchive;
 import main.java.User;
 
 public class FXMLControllerProfile {
@@ -26,6 +36,10 @@ public class FXMLControllerProfile {
 	private User user;
 	
 	//FXML elements
+	@FXML private Text username;
+	@FXML private Text email;
+	@FXML private Text gender;
+	@FXML private Text dateOfBirth;
 	@FXML private TextField minField;
 	@FXML private TextField maxField;
 	@FXML private PieChart pieChart;
@@ -113,7 +127,7 @@ public class FXMLControllerProfile {
 	}
 	
 	@FXML protected void handleCloseAccountButtonAction (ActionEvent event) {
-		//if(deleteUser(user)) {
+		if(CinemaSpaceArchive.deleteUser(user)) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Information Dialogue");
 			alert.setHeaderText(null);
@@ -126,16 +140,17 @@ public class FXMLControllerProfile {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}	
-		/*}
+		}
+		else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error Dialogue");
 			alert.setHeaderText(null);
 			alert.setContentText("A problem occurred during the closure of your account. Please try again !");
 			alert.showAndWait();
-		*/
+		}
 	}
 	
-	@FXML protected void handleConfirmPieChartButtonAction (ActionEvent event) {
+	@FXML protected void handleConfirmPieChartButtonAction (ActionEvent event) {		
 		if(minField.getText().isEmpty()) {
 			minField.setText("0");
 		}
@@ -172,8 +187,15 @@ public class FXMLControllerProfile {
 					maxField.setText("");
 				}
 				else {
-					//pieElement = generateMostRecurrentGenresByRatingIntervals(user, min, max);
-					//Creation of PieChart with pieElement
+					System.out.println("ici");
+					pieElement = CinemaSpaceArchive.generateMostRecurrentGenresByRatingIntervals(user, min, max);
+					if(pieChart.getData() != null) {
+						pieChart.getData().clear();
+					}
+					for(Map.Entry<String,Integer> element : pieElement.entrySet()) {
+						pieChart.getData().add(new PieChart.Data(element.getKey(), element.getValue()));
+						System.out.println(element.getKey()+" "+element.getValue());
+					}
 				}
 			}
 			else if (!isValidValueMinMax(minField.getText())) {
@@ -195,6 +217,8 @@ public class FXMLControllerProfile {
 		}
 	}
 	
+	
+	
 	public static boolean isValidValueMinMax(String value)
     {
         String emailRegex = "^[0-9.]+$";
@@ -207,5 +231,10 @@ public class FXMLControllerProfile {
 	
 	public void initUser(User user) {
 		this.user = user;
+		username.setText(user.getUsername());;
+		email.setText(user.getEmail());
+		gender.setText(user.getGender());;
+		dateOfBirth.setText(user.getDateOfBirth());;
+		
 	}
 }
