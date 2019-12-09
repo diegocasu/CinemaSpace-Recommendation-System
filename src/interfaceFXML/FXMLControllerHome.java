@@ -1,13 +1,10 @@
 package interfaceFXML;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import javax.imageio.ImageIO;
 
 import javafx.embed.swing.SwingFXUtils;
@@ -24,7 +21,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -318,8 +314,6 @@ public class FXMLControllerHome {
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
 			FXMLControllerMovie controller = load.<FXMLControllerMovie>getController();
-			System.out.println(listOfFilms.get(8*(actualPage-1)).getTitle());
-			System.out.println(user);
 			if(listOfFilms != null) {
 				controller.initFilm(listOfFilms.get(8*(actualPage-1)));
 				if(user != null) {
@@ -356,8 +350,6 @@ public class FXMLControllerHome {
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
 			FXMLControllerMovie controller = load.<FXMLControllerMovie>getController();
-			System.out.println(listOfFilms.get(8*(actualPage-1)).getTitle());
-			System.out.println(user);
 			if(listOfFilms != null) {
 				controller.initFilm(listOfFilms.get(8*(actualPage-1)+1));
 				if(user != null) {
@@ -630,6 +622,7 @@ public class FXMLControllerHome {
 		if(8*(actualPage-1) < maxNbFilms) {
 			film1.setVisible(true);
 			titleFilm1.setText(listOfFilms.get(8*(actualPage-1)).getTitle());
+			titleFilm1.setWrappingWidth(170.0);
 			try {
 				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilms.get(8*(actualPage-1)).getPosterPath());
 				try {
@@ -651,6 +644,7 @@ public class FXMLControllerHome {
 		if(8*(actualPage-1)+1 < maxNbFilms) {
 			film2.setVisible(true);
 			titleFilm2.setText(listOfFilms.get(8*(actualPage-1)+1).getTitle());
+			titleFilm2.setWrappingWidth(170.0);
 			try {
 				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilms.get(8*(actualPage-1)+1).getPosterPath());
 				try {
@@ -672,6 +666,7 @@ public class FXMLControllerHome {
 		if(8*(actualPage-1)+2 < maxNbFilms) {
 			film3.setVisible(true);
 			titleFilm3.setText(listOfFilms.get(8*(actualPage-1)+2).getTitle());
+			titleFilm3.setWrappingWidth(170.0);
 			try {
 				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilms.get(8*(actualPage-1)+2).getPosterPath());
 				try {
@@ -693,6 +688,7 @@ public class FXMLControllerHome {
 		if(8*(actualPage-1)+3 < maxNbFilms) {
 			film4.setVisible(true);
 			titleFilm4.setText(listOfFilms.get(8*(actualPage-1)+3).getTitle());
+			titleFilm4.setWrappingWidth(170.0);
 			try {
 				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilms.get(8*(actualPage-1)+3).getPosterPath());
 				try {
@@ -714,6 +710,7 @@ public class FXMLControllerHome {
 		if(8*(actualPage-1)+4 < maxNbFilms) {
 			film5.setVisible(true);
 			titleFilm5.setText(listOfFilms.get(8*(actualPage-1)+4).getTitle());
+			titleFilm5.setWrappingWidth(170.0);
 			try {
 				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilms.get(8*(actualPage-1)+4).getPosterPath());
 				try {
@@ -735,6 +732,7 @@ public class FXMLControllerHome {
 		if(8*(actualPage-1)+5 < maxNbFilms) {
 			film6.setVisible(true);
 			titleFilm6.setText(listOfFilms.get(8*(actualPage-1)+5).getTitle());
+			titleFilm6.setWrappingWidth(170.0);
 			try {
 				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilms.get(8*(actualPage-1)+5).getPosterPath());
 				try {
@@ -756,6 +754,7 @@ public class FXMLControllerHome {
 		if(8*(actualPage-1)+6 < maxNbFilms) {
 			film7.setVisible(true);
 			titleFilm7.setText(listOfFilms.get(8*(actualPage-1)+6).getTitle());
+			titleFilm7.setWrappingWidth(170.0);
 			try {
 				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilms.get(8*(actualPage-1)+6).getPosterPath());
 				try {
@@ -777,6 +776,7 @@ public class FXMLControllerHome {
 		if(8*(actualPage-1)+7 < maxNbFilms) {
 			film8.setVisible(true);
 			titleFilm8.setText(listOfFilms.get(8*(actualPage-1)+7).getTitle());
+			titleFilm8.setWrappingWidth(170.0);
 			try {
 				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilms.get(8*(actualPage-1)+7).getPosterPath());
 				try {
