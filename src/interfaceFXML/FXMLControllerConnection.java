@@ -137,14 +137,14 @@ public class FXMLControllerConnection {
 		else {
 			email = emailLogin.getText();
 			if(isValidEmail(email)) {
+				user = CinemaSpaceArchive.login(email, passwordLogin.getText());
 				try {
-					FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
-					root = load.load();
-					stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-					stage.setScene(new Scene(root));
-					FXMLControllerHome controller = load.<FXMLControllerHome>getController();
-					user = CinemaSpaceArchive.login(email, passwordLogin.getText());
 					if(user != null) {
+						FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+						root = load.load();
+						stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+						stage.setScene(new Scene(root));
+						FXMLControllerHome controller = load.<FXMLControllerHome>getController();
 						controller.initUser(user);
 					}
 					else
