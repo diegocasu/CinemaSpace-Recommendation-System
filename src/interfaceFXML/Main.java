@@ -17,7 +17,7 @@ public class Main extends Application {
 	public void start(Stage stage){
 		try {
 			LocalConfigurationParameters.retrieveLocalConfiguration();
-			CinemaSpaceArchive.openConnection(LocalConfigurationParameters.addressDBMS, LocalConfigurationParameters.portDBMS);
+			CinemaSpaceArchive.openConnection(LocalConfigurationParameters.connectionString);
 			Parent root = FXMLLoader.load(getClass().getResource("connection.fxml"));
 			Scene sceneConnection = new Scene(root);
 			stage.setTitle("CinemaSpace");

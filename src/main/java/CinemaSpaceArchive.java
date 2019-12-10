@@ -211,8 +211,8 @@ public class CinemaSpaceArchive {
 	}
 	
 	
- 	public static void openConnection(String addressDBMS, String portDBMS) {
- 		databaseAddress += addressDBMS + ":" + portDBMS;
+ 	public static void openConnection(String connectionString) {
+ 		databaseAddress += connectionString;
  		
 		clientConnection = MongoClients.create(databaseAddress);
 		cinemaSpaceDatabase = clientConnection.getDatabase("CinemaSpace");
