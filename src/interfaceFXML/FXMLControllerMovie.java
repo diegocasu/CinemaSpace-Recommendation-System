@@ -159,9 +159,14 @@ public class FXMLControllerMovie {
 		}
 		else {
 			try {
-				root = FXMLLoader.load(getClass().getResource("admin.fxml"));
+				FXMLLoader load = new FXMLLoader(getClass().getResource("admin.fxml"));
+				root = load.load();
 				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				stage.setScene(new Scene(root));
+				FXMLControllerAdmin controller = load.<FXMLControllerAdmin>getController();
+				if(user != null) {
+					controller.initUser(user);
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}	
