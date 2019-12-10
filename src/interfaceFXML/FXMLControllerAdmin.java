@@ -23,11 +23,13 @@ import main.java.CastMember;
 import main.java.CinemaSpaceArchive;
 import main.java.CrewMember;
 import main.java.Film;
+import main.java.User;
 
 public class FXMLControllerAdmin {
 	//Switch page controller
 	private Parent root;
 	private Stage stage;
+	private User user;
 	
 	//FXML elements
 	@FXML private TextField fileNameField;
@@ -44,9 +46,15 @@ public class FXMLControllerAdmin {
 	
 	@FXML protected void handleHomeButtonAction (ActionEvent event) {
 		try {
-			root = FXMLLoader.load(getClass().getResource("home.fxml"));
+			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
+			FXMLControllerHome controller = load.<FXMLControllerHome>getController();
+			controller.homePage();
+			if(user != null) {
+				controller.initUser(user);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
@@ -60,6 +68,9 @@ public class FXMLControllerAdmin {
 			stage.setScene(new Scene(root));
 			FXMLControllerHome controller = load.<FXMLControllerHome>getController();
 			controller.highestRated();
+			if(user != null) {
+				controller.initUser(user);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
@@ -73,6 +84,9 @@ public class FXMLControllerAdmin {
 			stage.setScene(new Scene(root));
 			FXMLControllerHome controller = load.<FXMLControllerHome>getController();
 			controller.mostPopular();
+			if(user != null) {
+				controller.initUser(user);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
@@ -80,9 +94,14 @@ public class FXMLControllerAdmin {
 
 	@FXML protected void handleAddFilmsButtonAction (ActionEvent event) {
 		try {
-			root = FXMLLoader.load(getClass().getResource("admin.fxml"));
+			FXMLLoader load = new FXMLLoader(getClass().getResource("admin.fxml"));
+			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
+			FXMLControllerAdmin controller = load.<FXMLControllerAdmin>getController();
+			if(user != null) {
+				controller.initUser(user);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
@@ -199,5 +218,8 @@ public class FXMLControllerAdmin {
 	        ex.printStackTrace();
 	    }
 	}
-
+	
+	public void initUser(User user) {
+		this.user = user;
+	}
 }
