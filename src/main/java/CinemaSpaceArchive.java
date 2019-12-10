@@ -4,6 +4,7 @@ package main.java;
 import java.util.*;
 import org.bson.*;
 import org.bson.conversions.*;
+import org.bson.types.*;
 import com.mongodb.client.*;
 import com.mongodb.client.model.*;
 import com.mongodb.client.result.*;
@@ -16,7 +17,6 @@ public class CinemaSpaceArchive {
 	
 	
 	private static Film extractFilmFromDocument(Document filmDocument) {
-		@SuppressWarnings("unchecked")
 		Film newFilm = new Film(filmDocument.getObjectId("_id"),
 								DatabaseObjectConverter.convertToDouble(filmDocument.get("budget")),
 								(List<String>)filmDocument.get("genres"), 
@@ -422,7 +422,6 @@ public class CinemaSpaceArchive {
 				
 				// Statistics grouped by age only (both males and females)
 	
-				@SuppressWarnings("unchecked")
 				Document averageTotal = ((List<Document>)ratingDocument.get("groupTotal")).get(0);
 				ratingDistribution.replace("All_18", averageTotal.getDouble("averageLessThan18"));
 				ratingDistribution.replace("All_18_45", averageTotal.getDouble("average18_45"));
@@ -430,7 +429,6 @@ public class CinemaSpaceArchive {
 
 				// Statistics grouped by age and gender
 				
-				@SuppressWarnings("unchecked")
 				List<Document> averageByGender = (List<Document>)ratingDocument.get("groupByGender");
 				
 				for(Document averageOfGender : averageByGender) {
@@ -647,4 +645,19 @@ public class CinemaSpaceArchive {
 		}
 	}
 
+	public static Film getFilm(ObjectId filmId) {
+		MongoCollection<Document> filmCollection = cinemaSpaceDatabase.getCollection("Film");
+		Film film = null;
+		
+		try{
+			Document filmDocument = filmCollection.find(Filters.eq("_id", filmId)).first();
+			film = CinemaSpaceArchive.extractFilmFromDocument(filmDocument);
+			
+		} catch(Exception exception) {
+			exception.printStackTrace();
+		}
+		
+		return film;	
+	}
+	
 }
