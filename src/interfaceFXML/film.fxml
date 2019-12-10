@@ -313,62 +313,62 @@
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="allAll" strokeType="OUTSIDE" strokeWidth="0.0" text="Result1" textOrigin="CENTER" x="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Text fx:id="allAll" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="all18" strokeType="OUTSIDE" strokeWidth="0.0" text="Result2" textOrigin="CENTER" x="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Text fx:id="all18" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="all1845" strokeType="OUTSIDE" strokeWidth="0.0" text="Result3" textOrigin="CENTER" x="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Text fx:id="all1845" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="all45" strokeType="OUTSIDE" strokeWidth="0.0" text="Result4" textOrigin="CENTER" x="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Text fx:id="all45" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="maleAll" strokeType="OUTSIDE" strokeWidth="0.0" text="Result5" textOrigin="CENTER" x="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Text fx:id="maleAll" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="male18" strokeType="OUTSIDE" strokeWidth="0.0" text="Result6" textOrigin="CENTER" x="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Text fx:id="male18" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="male1845" strokeType="OUTSIDE" strokeWidth="0.0" text="Result7" textOrigin="CENTER" x="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Text fx:id="male1845" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="male45" strokeType="OUTSIDE" strokeWidth="0.0" text="Result8" textOrigin="CENTER" x="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Text fx:id="male45" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="femaleAll" strokeType="OUTSIDE" strokeWidth="0.0" text="Result9" textOrigin="CENTER" x="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Text fx:id="femaleAll" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="female18" strokeType="OUTSIDE" strokeWidth="0.0" text="Result10" textOrigin="CENTER" x="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Text fx:id="female18" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="female1845" strokeType="OUTSIDE" strokeWidth="0.0" text="Result11" textOrigin="CENTER" x="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Text fx:id="female1845" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="female45" strokeType="OUTSIDE" strokeWidth="0.0" text="Result12" textOrigin="CENTER" x="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Text fx:id="female45" strokeType="OUTSIDE" strokeWidth="0.0" text="NA" textOrigin="CENTER" x="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                           <GridPane.margin>
                             <Insets fx:id="x4" />
                           </GridPane.margin>
