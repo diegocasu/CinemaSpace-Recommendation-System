@@ -100,7 +100,7 @@
                 <HBox id="date_of_birth_part" fx:id="dateOfBirthPart" prefHeight="27.0" prefWidth="713.0">
                   <children>
                     <Text fx:id="date_of_birth_label" font="$x4" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:" underline="false" HBox.margin="$x2" />
-                    <Text fx:id="date_of_birth" strokeType="OUTSIDE" strokeWidth="0.0" text="dd/mm/year" />
+                    <Text fx:id="dateOfBirth" strokeType="OUTSIDE" strokeWidth="0.0" text="dd/mm/year" />
                   </children>
                 </HBox>
               </children>
@@ -157,7 +157,7 @@
                     <Insets right="50.0" />
                   </HBox.margin>
                 </VBox>
-                <PieChart id="PieChart" fx:id="pieChart" clockwise="true" labelLineLength="20.0" labelsVisible="false" legendSide="BOTTOM" prefHeight="261.0" prefWidth="440.74609375" startAngle="0.0" title="Genres proportion">
+                <PieChart id="PieChart" fx:id="pieChart" clockwise="true" labelLineLength="20.0" labelsVisible="false" legendSide="BOTTOM" prefHeight="261.0" prefWidth="440.74609375" startAngle="0.0" title="Genres proportion" >
                   <HBox.margin>
                     <Insets right="20.0" />
                   </HBox.margin>
