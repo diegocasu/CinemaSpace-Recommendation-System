@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.bson.types.ObjectId;
-
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -168,8 +165,8 @@ public class FXMLControllerAdmin {
             		keywords.add(keywordElements.next().textValue());
             	}
             	
-            	double averageRating = film.get("average_rating").doubleValue();
-            	int numberOfRatings = film.get("number_of_ratings").intValue();
+            	double averageRating = 0;
+            	int numberOfRatings = 0;
             	
             	List<CastMember> cast = new ArrayList<CastMember>();
             	Iterator<JsonNode> castElements = film.get("cast").iterator();
