@@ -263,6 +263,20 @@ public class FXMLControllerMovie {
 				alert.setHeaderText(null);
 				alert.setContentText("The film has been correctly deleted.");
 				alert.showAndWait();
+				
+				try {
+					FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+					root = load.load();
+					stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					stage.setScene(new Scene(root));
+					FXMLControllerHome controller = load.<FXMLControllerHome>getController();
+					controller.homePage();
+					if(user != null) {
+						controller.initUser(user);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 			else {
 				Alert alert = new Alert(AlertType.ERROR);
