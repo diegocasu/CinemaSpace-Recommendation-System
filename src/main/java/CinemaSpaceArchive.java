@@ -16,6 +16,7 @@ public class CinemaSpaceArchive {
 	
 	
 	private static Film extractFilmFromDocument(Document filmDocument) {
+		@SuppressWarnings("unchecked")
 		Film newFilm = new Film(filmDocument.getObjectId("_id"),
 								DatabaseObjectConverter.convertToDouble(filmDocument.get("budget")),
 								(List<String>)filmDocument.get("genres"), 
@@ -421,6 +422,7 @@ public class CinemaSpaceArchive {
 				
 				// Statistics grouped by age only (both males and females)
 	
+				@SuppressWarnings("unchecked")
 				Document averageTotal = ((List<Document>)ratingDocument.get("groupTotal")).get(0);
 				ratingDistribution.replace("All_18", averageTotal.getDouble("averageLessThan18"));
 				ratingDistribution.replace("All_18_45", averageTotal.getDouble("average18_45"));
@@ -428,6 +430,7 @@ public class CinemaSpaceArchive {
 
 				// Statistics grouped by age and gender
 				
+				@SuppressWarnings("unchecked")
 				List<Document> averageByGender = (List<Document>)ratingDocument.get("groupByGender");
 				
 				for(Document averageOfGender : averageByGender) {
@@ -507,9 +510,11 @@ public class CinemaSpaceArchive {
 			// Update number of ratings and mean rating
 			Document databaseFilm = filmCollection.find(Filters.eq("_id", rating.getFilmId())).first();
 			
-			double oldAverage = databaseFilm.getDouble("average_rating");
+			double oldAverage = DatabaseObjectConverter.convertToDouble(databaseFilm.get("average_rating"));
 			int oldNumberOfRatings = databaseFilm.getInteger("number_of_ratings"); 
 			double newAverage = ((oldAverage*oldNumberOfRatings)+ rating.getRating())/(oldNumberOfRatings+1);
+			
+			System.out.println("oldAverage : " + oldAverage + "\noldNumberOfRatings : " + oldNumberOfRatings + "\nnewAverage : " + newAverage);
 						
 			Document updateOperations = new Document("$set", new Document("average_rating", newAverage))
 										.append("$inc", new Document("number_of_ratings", 1));
@@ -554,7 +559,7 @@ public class CinemaSpaceArchive {
 				// Update number of ratings and mean rating
 				Document databaseFilm = filmCollection.find(Filters.eq("_id", rating.getFilmId())).first();
 				
-				double oldAverage = databaseFilm.getDouble("average_rating");
+				double oldAverage = DatabaseObjectConverter.convertToDouble(databaseFilm.get("average_rating"));
 				int numberOfRatings = databaseFilm.getInteger("number_of_ratings");
 				double oldRatingValue = oldRating.getDouble("rating");
 				
