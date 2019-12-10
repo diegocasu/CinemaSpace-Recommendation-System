@@ -463,6 +463,13 @@ public class FXMLControllerMovie {
 			all45.setText(String.format("%.2f", barDemographicData.get("All_45")) + "/5");
 		}
 		
+		if(barDemographicData.get("Male_All") == null) {
+			maleAll.setText("NA");
+		}
+		else {
+			maleAll.setText(String.format("%.2f", barDemographicData.get("Male_All")) + "/5");
+		}
+		
 		if(barDemographicData.get("Male_18") == null) {
 			male18.setText("NA");
 		}
@@ -482,6 +489,13 @@ public class FXMLControllerMovie {
 		}
 		else {
 			male45.setText(String.format("%.2f", barDemographicData.get("Male_45")) + "/5");
+		}
+		
+		if(barDemographicData.get("Female_All") == null) {
+			femaleAll.setText("NA");
+		}
+		else {
+			femaleAll.setText(String.format("%.2f", barDemographicData.get("Female_All")) + "/5");
 		}
 		
 		if(barDemographicData.get("Female_18") == null) {
