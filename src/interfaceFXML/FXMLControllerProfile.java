@@ -1,14 +1,9 @@
 package interfaceFXML;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.regex.Pattern;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
-import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.java.CinemaSpaceArchive;
@@ -50,6 +42,10 @@ public class FXMLControllerProfile {
 	
 	public FXMLControllerProfile() {
 		super();
+	}
+	
+	@FXML protected void initialize() {
+		pieChart.setVisible(false);
 	}
 	
 	@FXML protected void handleHomeButtonAction (ActionEvent event) {
@@ -187,15 +183,17 @@ public class FXMLControllerProfile {
 					maxField.setText("");
 				}
 				else {
-					System.out.println("ici");
+					pieChart.setVisible(true);
+					pieChart.setTitle("Most Recurrent Genres From " + min + " to " + max);
 					pieElement = CinemaSpaceArchive.generateMostRecurrentGenresByRatingIntervals(user, min, max);
 					if(pieChart.getData() != null) {
 						pieChart.getData().clear();
 					}
 					for(Map.Entry<String,Integer> element : pieElement.entrySet()) {
 						pieChart.getData().add(new PieChart.Data(element.getKey(), element.getValue()));
-						System.out.println(element.getKey()+" "+element.getValue());
 					}
+					maxField.setText("");
+					minField.setText("");
 				}
 			}
 			else if (!isValidValueMinMax(minField.getText())) {
