@@ -15,8 +15,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.CastMember;
@@ -128,12 +130,13 @@ public class FXMLControllerAdmin {
 
 	@FXML protected void handleConfirmAddFilmsButtonAction (ActionEvent event) {
 		List<Film> films = new ArrayList<Film>();
-        
+		int i = 0;
 		try {
 	        ObjectMapper mapper = new ObjectMapper();
 	        JsonNode node = mapper.readTree(new File(fileNameField.getText()));
 	        Iterator<JsonNode> nodeFilms = node.iterator();
 	        while (nodeFilms.hasNext()) {
+	        	i++;
 	        	JsonNode film = nodeFilms.next();	        
 	        	
 	        	double budget = film.get("budget").doubleValue();
@@ -213,9 +216,25 @@ public class FXMLControllerAdmin {
             			status, tagline, title, numberOfVisits, keywords, cast, crew, averageRating, numberOfRatings));
 	        }
 	        CinemaSpaceArchive.addFilms(films);
+	        fileNameField.setText("");
+	        Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Information Dialogue");
+			alert.setHeaderText(null);
+			if(i == 1) {
+				alert.setContentText("Your have uploaded " + i + " film in the database.");
+			}
+			else {
+				alert.setContentText("Your have uploaded " + i + " films in the database.");
+			}
+			alert.showAndWait();
 	        
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
+	        Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialogue");
+			alert.setHeaderText(null);
+			alert.setContentText("An error has occured during the process. Please try again !");
+			alert.showAndWait();
 	    }
 	}
 	
