@@ -450,59 +450,59 @@ public class FXMLControllerMovie {
 		}
 		
 		if(barDemographicData.get("All_18_45") == null) {
-			all18.setText("NA");
+			all1845.setText("NA");
 		}
 		else {
-			all18.setText(String.format("%.2f", barDemographicData.get("All_18_45")) + "/5");
+			all1845.setText(String.format("%.2f", barDemographicData.get("All_18_45")) + "/5");
 		}
 		
 		if(barDemographicData.get("All_45") == null) {
-			all18.setText("NA");
+			all45.setText("NA");
 		}
 		else {
-			all18.setText(String.format("%.2f", barDemographicData.get("All_45")) + "/5");
+			all45.setText(String.format("%.2f", barDemographicData.get("All_45")) + "/5");
 		}
 		
 		if(barDemographicData.get("Male_18") == null) {
-			all18.setText("NA");
+			male18.setText("NA");
 		}
 		else {
-			all18.setText(String.format("%.2f", barDemographicData.get("Male_18")) + "/5");
+			male18.setText(String.format("%.2f", barDemographicData.get("Male_18")) + "/5");
 		}
 		
 		if(barDemographicData.get("Male_18_45") == null) {
-			all18.setText("NA");
+			male1845.setText("NA");
 		}
 		else {
-			all18.setText(String.format("%.2f", barDemographicData.get("Male_18_45")) + "/5");
+			male1845.setText(String.format("%.2f", barDemographicData.get("Male_18_45")) + "/5");
 		}
 		
 		if(barDemographicData.get("Male_45") == null) {
-			all18.setText("NA");
+			male45.setText("NA");
 		}
 		else {
-			all18.setText(String.format("%.2f", barDemographicData.get("Male_45")) + "/5");
+			male45.setText(String.format("%.2f", barDemographicData.get("Male_45")) + "/5");
 		}
 		
 		if(barDemographicData.get("Female_18") == null) {
-			all18.setText("NA");
+			female18.setText("NA");
 		}
 		else {
-			all18.setText(String.format("%.2f", barDemographicData.get("Female_18")) + "/5");
+			female18.setText(String.format("%.2f", barDemographicData.get("Female_18")) + "/5");
 		}
 		
 		if(barDemographicData.get("Female_18_45") == null) {
-			all18.setText("NA");
+			female1845.setText("NA");
 		}
 		else {
-			all18.setText(String.format("%.2f", barDemographicData.get("Female_18_45")) + "/5");
+			female1845.setText(String.format("%.2f", barDemographicData.get("Female_18_45")) + "/5");
 		}
 		
 		if(barDemographicData.get("Female_45") == null) {
-			all18.setText("NA");
+			female45.setText("NA");
 		}
 		else {
-			all18.setText(String.format("%.2f", barDemographicData.get("Female_45")) + "/5");
+			female45.setText(String.format("%.2f", barDemographicData.get("Female_45")) + "/5");
 		}
 	}
 
