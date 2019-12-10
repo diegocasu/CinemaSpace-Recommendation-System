@@ -92,7 +92,6 @@ public class FXMLControllerMovie {
 	}
 	
 	@FXML protected void initialize() {		
-		
 	}
 	
 	@FXML protected void handleHomeButtonAction (ActionEvent event) {
@@ -200,6 +199,20 @@ public class FXMLControllerMovie {
 		Rating existing_rate = CinemaSpaceArchive.getRating(film, user);
 		if (existing_rate != null && new_rate != null) {
 			CinemaSpaceArchive.updateRating(new_rate);
+			film = CinemaSpaceArchive.getFilm(film.getId());
+
+			try {
+				FXMLLoader load = new FXMLLoader(getClass().getResource("film.fxml"));
+				root = load.load();
+				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stage.setScene(new Scene(root));
+				FXMLControllerMovie controller = load.<FXMLControllerMovie>getController();
+				controller.initFilm(film);
+				controller.initUser(user);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Information Dialogue");
 			alert.setHeaderText(null);
@@ -208,6 +221,20 @@ public class FXMLControllerMovie {
 		}
 		else if(new_rate != null){
 			CinemaSpaceArchive.addRating(new_rate);
+			film = CinemaSpaceArchive.getFilm(film.getId());
+			
+			try {
+				FXMLLoader load = new FXMLLoader(getClass().getResource("film.fxml"));
+				root = load.load();
+				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stage.setScene(new Scene(root));
+				FXMLControllerMovie controller = load.<FXMLControllerMovie>getController();
+				controller.initFilm(film);
+				controller.initUser(user);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Information Dialogue");
 			alert.setHeaderText(null);
@@ -258,9 +285,10 @@ public class FXMLControllerMovie {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	public void initFilm(Film film) {
 		this.film = film;	
+		
+		CinemaSpaceArchive.increaseNumberOfVisits(film);
 		
 		URL url;
 		try {
@@ -368,13 +396,18 @@ public class FXMLControllerMovie {
 		
 		//Overall Mean rating
 		overallMeanRatingDouble = film.getAverageRating();
-		overallMeanRating.setText(String.format("%.2f", overallMeanRatingDouble) + "/5");
+		if(overallMeanRatingDouble == 0) {
+			overallMeanRating.setText( "NA");
+		}
+		else {
+			overallMeanRating.setText(String.format("%.2f", overallMeanRatingDouble) + "/5");
+		}
 		
 		//Recent Mean rating
 		
 		recentMeanRatingDouble = CinemaSpaceArchive.generateRecentMeanRating(film);
 		if(recentMeanRatingDouble == -1) {
-			recentMeanRating.setText( "None");
+			recentMeanRating.setText( "NA");
 		}
 		else {
 			recentMeanRating.setText(String.format("%.2f", recentMeanRatingDouble) + "/5");
@@ -402,20 +435,75 @@ public class FXMLControllerMovie {
 		barRatings.getData().addAll(serie);
 		statisticPart.getChildren().add(barRatings);
 		Map<String, Double> barDemographicData = CinemaSpaceArchive.generateDistributionOfRatingsByDemographic(film);
-		allAll.setText(String.format("%.2f", film.getAverageRating()) + "/5");
-		all18.setText(String.format("%.2f", barDemographicData.get("All_18")) + "/5");
-		all1845.setText(String.format("%.2f", barDemographicData.get("All_18_45")) + "/5");
-		all45.setText(String.format("%.2f", barDemographicData.get("All_45")) + "/5");
+		if(film.getAverageRating() == 0) {
+			allAll.setText("NA");
+		}
+		else {
+			allAll.setText(String.format("%.2f", film.getAverageRating()) + "/5");
+		}
 		
-		maleAll.setText(String.format("%.2f", barDemographicData.get("Male_All")) + "/5");
-		male18.setText(String.format("%.2f", barDemographicData.get("Male_18")) + "/5");
-		male1845.setText(String.format("%.2f", barDemographicData.get("Male_18_45")) + "/5");
-		male45.setText(String.format("%.2f", barDemographicData.get("Male_45")) + "/5");
+		if(barDemographicData.get("All_18") == null) {
+			all18.setText("NA");
+		}
+		else {
+			all18.setText(String.format("%.2f", barDemographicData.get("All_18")) + "/5");
+		}
 		
-		femaleAll.setText(String.format("%.2f", barDemographicData.get("Female_All")) + "/5");
-		female18.setText(String.format("%.2f", barDemographicData.get("Female_18")) + "/5");
-		female1845.setText(String.format("%.2f", barDemographicData.get("Female_18_45")) + "/5");
-		female45.setText(String.format("%.2f", barDemographicData.get("Female_45")) + "/5");
+		if(barDemographicData.get("All_18_45") == null) {
+			all18.setText("NA");
+		}
+		else {
+			all18.setText(String.format("%.2f", barDemographicData.get("All_18_45")) + "/5");
+		}
+		
+		if(barDemographicData.get("All_45") == null) {
+			all18.setText("NA");
+		}
+		else {
+			all18.setText(String.format("%.2f", barDemographicData.get("All_45")) + "/5");
+		}
+		
+		if(barDemographicData.get("Male_18") == null) {
+			all18.setText("NA");
+		}
+		else {
+			all18.setText(String.format("%.2f", barDemographicData.get("Male_18")) + "/5");
+		}
+		
+		if(barDemographicData.get("Male_18_45") == null) {
+			all18.setText("NA");
+		}
+		else {
+			all18.setText(String.format("%.2f", barDemographicData.get("Male_18_45")) + "/5");
+		}
+		
+		if(barDemographicData.get("Male_45") == null) {
+			all18.setText("NA");
+		}
+		else {
+			all18.setText(String.format("%.2f", barDemographicData.get("Male_45")) + "/5");
+		}
+		
+		if(barDemographicData.get("Female_18") == null) {
+			all18.setText("NA");
+		}
+		else {
+			all18.setText(String.format("%.2f", barDemographicData.get("Female_18")) + "/5");
+		}
+		
+		if(barDemographicData.get("Female_18_45") == null) {
+			all18.setText("NA");
+		}
+		else {
+			all18.setText(String.format("%.2f", barDemographicData.get("Female_18_45")) + "/5");
+		}
+		
+		if(barDemographicData.get("Female_45") == null) {
+			all18.setText("NA");
+		}
+		else {
+			all18.setText(String.format("%.2f", barDemographicData.get("Female_45")) + "/5");
+		}
 	}
 
 }
