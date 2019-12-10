@@ -89,6 +89,9 @@ public class FXMLControllerHome {
 		actualPage = 0;
 		maxNbPages = 0;
 		clearListOfFilms();
+		if(!searchBar.getText().isEmpty()) {
+			searchBar.setText("");
+		}
 		
 		//TEST
 		listOfFilms = new ArrayList<Film>();
@@ -177,6 +180,7 @@ public class FXMLControllerHome {
 	
 	@FXML protected void handleSearchButtonAction (ActionEvent event) {
 		if (!searchBar.getText().isEmpty()) {
+			films.setText("Films matching with " + searchBar.getText());
 			List<String> keywords = new ArrayList<String>();
 			keywords.add(searchBar.getText());
 			String[] array_keywords = searchBar.getText().split(" ");
