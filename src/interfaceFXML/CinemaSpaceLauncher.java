@@ -2,9 +2,11 @@ package interfaceFXML;
 
 import java.io.IOException;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import main.java.CinemaSpaceArchive;
 import main.java.LocalConfigurationParameters;
 import javafx.scene.Parent;
@@ -23,6 +25,7 @@ public class CinemaSpaceLauncher extends Application {
 			stage.setTitle("CinemaSpace");
 			stage.setScene(sceneConnection);
 			stage.getIcons().add(new Image(getClass().getResourceAsStream("CinemaSpaceIcon.png")));
+			stage.setOnCloseRequest((WindowEvent event)-> {CinemaSpaceArchive.closeConnection();});
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
