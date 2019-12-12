@@ -169,7 +169,7 @@ public class CinemaSpaceArchive {
 										   .append("original_language", film.getOriginalLanguage())
 										   .append("original_title", film.getOriginalTitle())
 										   .append("overview", film.getOverview())
-										   .append("poster_path", film.getOverview())
+										   .append("poster_path", film.getPosterPath())
 										   .append("production_companies", film.getProductionCompanies())
 										   .append("production_countries", film.getProductionCountries())
 										   .append("release_date", film.getReleaseDate())
