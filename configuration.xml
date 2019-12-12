@@ -1,6 +1,19 @@
 ﻿<Parameters>
-    <connection>
-        <addressDBMS>localhost</addressDBMS>
-        <portDBMS>27017</portDBMS>
-    </connection>
+	<connection>
+		<replicaName>cinemaReplicaSet</replicaName>
+		<replicaSet>
+			<replica>
+				<addressDBMS>localhost</addressDBMS>
+				<portDBMS>27017</portDBMS>
+			</replica>
+			<replica>
+				<addressDBMS>localhost</addressDBMS>
+				<portDBMS>27018</portDBMS>
+			</replica>
+			<replica>
+				<addressDBMS>localhost</addressDBMS>
+				<portDBMS>27019</portDBMS>
+			</replica>
+		</replicaSet>
+	</connection>
 </Parameters>

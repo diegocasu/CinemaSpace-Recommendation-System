@@ -5,6 +5,9 @@ import javax.xml.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.xml.sax.*;
 import javax.xml.validation.*;
 import javax.xml.transform.dom.*;
@@ -14,8 +17,7 @@ public class LocalConfigurationParameters {
     private static final String XMLConfigurationFilePath = "./configuration.xml";
     private static final String XSDConfigurationFilePath = "./configuration.xsd";
     
-    public static String addressDBMS;
-    public static String portDBMS;
+    public static String connectionString = "";
     
     private static Document validateXMLConfiguration(){
         Document configurationDocument;
@@ -47,8 +49,21 @@ public class LocalConfigurationParameters {
         if (configurationDocument == null)
             return false;
         
-        addressDBMS = configurationDocument.getElementsByTagName("addressDBMS").item(0).getTextContent();
-        portDBMS = configurationDocument.getElementsByTagName("portDBMS").item(0).getTextContent();
+        NodeList replicaSet = configurationDocument.getElementsByTagName("replica");
+        String replicaName = configurationDocument.getElementsByTagName("replicaName").item(0).getTextContent();
+        
+        List<String> replicasAddress = new ArrayList<String>();
+        
+        for (int i = 0; i < replicaSet.getLength(); i++) {
+          Element replica = (Element) replicaSet.item(i);
+          String addressDBMS = replica.getElementsByTagName("addressDBMS").item(0).getTextContent();
+          String portDBMS = replica.getElementsByTagName("portDBMS").item(0).getTextContent();
+          
+          replicasAddress.add(addressDBMS + ":" + portDBMS);
+        }
+         
+        connectionString += String.join(",", replicasAddress);
+        connectionString += "/?replicaSet=" + replicaName;
         
         return true;
     }

@@ -2,7 +2,6 @@ package interfaceFXML;
 
 import java.io.IOException;
 
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -19,7 +18,7 @@ public class CinemaSpaceLauncher extends Application {
 	public void start(Stage stage){
 		try {
 			LocalConfigurationParameters.retrieveLocalConfiguration();
-			CinemaSpaceArchive.openConnection(LocalConfigurationParameters.addressDBMS, LocalConfigurationParameters.portDBMS);
+			CinemaSpaceArchive.openConnection(LocalConfigurationParameters.connectionString);
 			Parent root = FXMLLoader.load(getClass().getResource("connection.fxml"));
 			Scene sceneConnection = new Scene(root);
 			stage.setTitle("CinemaSpace");
