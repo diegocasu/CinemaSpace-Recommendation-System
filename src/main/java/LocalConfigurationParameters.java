@@ -65,9 +65,9 @@ public class LocalConfigurationParameters {
         connectionString += String.join(",", replicasAddress);
         connectionString += "/?replicaSet=" + replicaName;
         
-        /************** TO BE REMOVED AFTER REPLICA SET IMPLEMENTATION/
+        // ######## TO BE REMOVED AFTER REPLICA SET IMPLEMENTATION
         connectionString = "localhost:27017";
-        /*************/
+        // #########
         
         return true;
     }
