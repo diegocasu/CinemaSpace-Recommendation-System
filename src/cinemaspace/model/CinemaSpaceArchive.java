@@ -5,6 +5,8 @@ import java.util.*;
 import org.bson.*;
 import org.bson.conversions.*;
 import org.bson.types.*;
+import com.mongodb.*;
+import com.mongodb.MongoClientSettings.*;
 import com.mongodb.client.*;
 import com.mongodb.client.model.*;
 import com.mongodb.client.result.*;
@@ -214,7 +216,14 @@ public class CinemaSpaceArchive {
  	public static void openConnection(String connectionString) {
  		databaseAddress += connectionString;
  		
-		clientConnection = MongoClients.create(databaseAddress);
+ 		Builder connectionSettingsBuilder = MongoClientSettings.builder();
+ 		connectionSettingsBuilder.readPreference(ReadPreference.primaryPreferred());
+ 		connectionSettingsBuilder.readConcern(ReadConcern.LOCAL);
+ 		connectionSettingsBuilder.writeConcern(new WriteConcern(1));
+ 		connectionSettingsBuilder.applyConnectionString(new ConnectionString(databaseAddress));
+ 		MongoClientSettings connectionOptions = connectionSettingsBuilder.build();
+ 					
+		clientConnection = MongoClients.create(connectionOptions);
 		cinemaSpaceDatabase = clientConnection.getDatabase("CinemaSpace");
 	}
 	
