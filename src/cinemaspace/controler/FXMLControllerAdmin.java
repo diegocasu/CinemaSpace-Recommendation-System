@@ -1,4 +1,4 @@
-package interfaceFXML;
+package cinemaspace.controler;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,11 @@ import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import cinemaspace.model.CastMember;
+import cinemaspace.model.CinemaSpaceArchive;
+import cinemaspace.model.CrewMember;
+import cinemaspace.model.Film;
+import cinemaspace.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,11 +26,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import main.java.CastMember;
-import main.java.CinemaSpaceArchive;
-import main.java.CrewMember;
-import main.java.Film;
-import main.java.User;
 
 public class FXMLControllerAdmin {
 	//Switch page controller
@@ -48,7 +48,8 @@ public class FXMLControllerAdmin {
 	
 	@FXML protected void handleHomeButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -64,7 +65,8 @@ public class FXMLControllerAdmin {
 
 	@FXML protected void handleHighestRatedButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -80,7 +82,8 @@ public class FXMLControllerAdmin {
 	
 	@FXML protected void handleMostPopularButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -96,7 +99,8 @@ public class FXMLControllerAdmin {
 
 	@FXML protected void handleAddFilmsButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("admin.fxml"));
+			String address = new File("target/classes/cinemaspace/view/admin.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -111,7 +115,9 @@ public class FXMLControllerAdmin {
 
 	@FXML protected void handleDisconnectionButtonAction (ActionEvent event) {
 		try {
-			root = FXMLLoader.load(getClass().getResource("connection.fxml"));
+			String address = new File("target/classes/cinemaspace/view/connection.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
+			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
 		} catch (IOException e) {

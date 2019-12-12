@@ -1,13 +1,18 @@
-package interfaceFXML;
+package cinemaspace.controler;
 
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
+import cinemaspace.model.CinemaSpaceArchive;
+import cinemaspace.model.LocalConfigurationParameters;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import main.java.CinemaSpaceArchive;
-import main.java.LocalConfigurationParameters;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -19,11 +24,13 @@ public class CinemaSpaceLauncher extends Application {
 		try {
 			LocalConfigurationParameters.retrieveLocalConfiguration();
 			CinemaSpaceArchive.openConnection(LocalConfigurationParameters.connectionString);
-			Parent root = FXMLLoader.load(getClass().getResource("connection.fxml"));
+			String address = new File("target/classes/cinemaspace/view/connection.fxml").getAbsolutePath();
+			Parent root = new FXMLLoader(new File(address).toURI().toURL()).load();
 			Scene sceneConnection = new Scene(root);
 			stage.setTitle("CinemaSpace");
 			stage.setScene(sceneConnection);
-			stage.getIcons().add(new Image(getClass().getResourceAsStream("CinemaSpaceIcon.png")));
+			InputStream is = new FileInputStream("target/classes/cinemaspace/view/CinemaSpaceIcon.png");
+			stage.getIcons().add(new Image(is));
 			stage.setOnCloseRequest((WindowEvent event)-> {CinemaSpaceArchive.closeConnection();});
 			stage.show();
 		} catch (IOException e) {

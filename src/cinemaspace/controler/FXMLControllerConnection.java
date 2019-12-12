@@ -1,8 +1,11 @@
-package interfaceFXML;
+package cinemaspace.controler;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+import cinemaspace.model.CinemaSpaceArchive;
+import cinemaspace.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +21,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import main.java.CinemaSpaceArchive;
-import main.java.User;
 
 public class FXMLControllerConnection {
 	//Switch page controller
@@ -140,7 +141,8 @@ public class FXMLControllerConnection {
 				user = CinemaSpaceArchive.login(email, passwordLogin.getText());
 				try {
 					if(user != null) {
-						FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+						String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+						FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 						root = load.load();
 						stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 						stage.setScene(new Scene(root));

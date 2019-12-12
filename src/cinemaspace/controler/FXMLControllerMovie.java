@@ -1,6 +1,10 @@
-package interfaceFXML;
+package cinemaspace.controler;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
@@ -14,6 +18,12 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import cinemaspace.model.CastMember;
+import cinemaspace.model.CinemaSpaceArchive;
+import cinemaspace.model.CrewMember;
+import cinemaspace.model.Film;
+import cinemaspace.model.Rating;
+import cinemaspace.model.User;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,12 +45,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import main.java.CastMember;
-import main.java.CinemaSpaceArchive;
-import main.java.CrewMember;
-import main.java.Film;
-import main.java.Rating;
-import main.java.User;
 
 public class FXMLControllerMovie {
 	//Switch page controller
@@ -96,7 +100,8 @@ public class FXMLControllerMovie {
 	
 	@FXML protected void handleHomeButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -112,7 +117,8 @@ public class FXMLControllerMovie {
 	
 	@FXML protected void handleHighestRatedButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -128,7 +134,8 @@ public class FXMLControllerMovie {
 	
 	@FXML protected void handleMostPopularButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -145,7 +152,8 @@ public class FXMLControllerMovie {
 	@FXML protected void handleProfileButtonAction (ActionEvent event) {
 		if(profile.getText().equals("Profile")) {
 			try {
-				FXMLLoader load = new FXMLLoader(getClass().getResource("profile.fxml"));
+				String address = new File("target/classes/cinemaspace/view/profile.fxml").getAbsolutePath();
+				FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 				root = load.load();
 				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				stage.setScene(new Scene(root));
@@ -159,7 +167,8 @@ public class FXMLControllerMovie {
 		}
 		else {
 			try {
-				FXMLLoader load = new FXMLLoader(getClass().getResource("admin.fxml"));
+				String address = new File("target/classes/cinemaspace/view/admin.fxml").getAbsolutePath();
+				FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 				root = load.load();
 				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				stage.setScene(new Scene(root));
@@ -176,7 +185,9 @@ public class FXMLControllerMovie {
 	
 	@FXML protected void handleDisconnectionButtonAction (ActionEvent event) {
 		try {
-			root = FXMLLoader.load(getClass().getResource("connection.fxml"));
+			String address = new File("target/classes/cinemaspace/view/connection.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
+			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
 		} catch (IOException e) {
@@ -207,7 +218,8 @@ public class FXMLControllerMovie {
 			film = CinemaSpaceArchive.getFilm(film.getId());
 
 			try {
-				FXMLLoader load = new FXMLLoader(getClass().getResource("film.fxml"));
+				String address = new File("target/classes/cinemaspace/view/film.fxml").getAbsolutePath();
+				FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 				root = load.load();
 				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				stage.setScene(new Scene(root));
@@ -229,7 +241,8 @@ public class FXMLControllerMovie {
 			film = CinemaSpaceArchive.getFilm(film.getId());
 			
 			try {
-				FXMLLoader load = new FXMLLoader(getClass().getResource("film.fxml"));
+				String address = new File("target/classes/cinemaspace/view/film.fxml").getAbsolutePath();
+				FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 				root = load.load();
 				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				stage.setScene(new Scene(root));
@@ -265,7 +278,8 @@ public class FXMLControllerMovie {
 				alert.showAndWait();
 				
 				try {
-					FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+					String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+					FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 					root = load.load();
 					stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 					stage.setScene(new Scene(root));
@@ -304,7 +318,7 @@ public class FXMLControllerMovie {
 		}
 	}
 	
-	public void initFilm(Film film) {
+	public void initFilm(Film film) throws FileNotFoundException {
 		this.film = film;	
 		
 		CinemaSpaceArchive.increaseNumberOfVisits(film);
@@ -316,11 +330,13 @@ public class FXMLControllerMovie {
 				poster.setImage(SwingFXUtils.toFXImage(ImageIO.read(url), null));
 			} catch (IOException e) {
 				e.printStackTrace();
-				poster.setImage(new Image(getClass().getResource("nophoto.jpg").toString()));
+				InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
+				poster.setImage(new Image(is));
 			}
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
-			poster.setImage(new Image(getClass().getResource("nophoto.jpg").toString()));
+			InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
+			poster.setImage(new Image(is));
 		}
 		
 		title.setText(film.getTitle());

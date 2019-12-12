@@ -1,4 +1,4 @@
-package main.java;
+package cinemaspace.model;
 
 
 import java.util.*;
@@ -511,8 +511,6 @@ public class CinemaSpaceArchive {
 			double oldAverage = DatabaseObjectConverter.convertToDouble(databaseFilm.get("average_rating"));
 			int oldNumberOfRatings = databaseFilm.getInteger("number_of_ratings"); 
 			double newAverage = ((oldAverage*oldNumberOfRatings)+ rating.getRating())/(oldNumberOfRatings+1);
-			
-			System.out.println("oldAverage : " + oldAverage + "\noldNumberOfRatings : " + oldNumberOfRatings + "\nnewAverage : " + newAverage);
 						
 			Document updateOperations = new Document("$set", new Document("average_rating", newAverage))
 										.append("$inc", new Document("number_of_ratings", 1));

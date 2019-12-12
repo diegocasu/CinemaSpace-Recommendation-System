@@ -1,4 +1,4 @@
-package main.java;
+package cinemaspace.model;
 
 
 import org.bson.types.*;

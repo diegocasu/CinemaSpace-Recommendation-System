@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="globalPage" cache="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="&#10;" fx:controller="interfaceFXML.FXMLControllerAdmin" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane id="AnchorPane" fx:id="globalPage" cache="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="&#10;" fx:controller="cinemaspace.controler.FXMLControllerAdmin" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
     <VBox fx:id="menu" layoutX="0.0" layoutY="0.0" prefHeight="768.0" prefWidth="180.0" style="-fx-alignment:top-center;&#10;">
       <children>

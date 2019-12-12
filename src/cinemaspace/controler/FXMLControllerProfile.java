@@ -1,9 +1,12 @@
-package interfaceFXML;
+package cinemaspace.controler;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import cinemaspace.model.CinemaSpaceArchive;
+import cinemaspace.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +19,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import main.java.CinemaSpaceArchive;
-import main.java.User;
 
 public class FXMLControllerProfile {
 	//Switch page controller
@@ -50,7 +51,8 @@ public class FXMLControllerProfile {
 	
 	@FXML protected void handleHomeButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -66,7 +68,8 @@ public class FXMLControllerProfile {
 	
 	@FXML protected void handleHighestRatedButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -82,7 +85,8 @@ public class FXMLControllerProfile {
 	
 	@FXML protected void handleMostPopularButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("home.fxml"));
+			String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -98,7 +102,8 @@ public class FXMLControllerProfile {
 	
 	@FXML protected void handleProfileButtonAction (ActionEvent event) {
 		try {
-			FXMLLoader load = new FXMLLoader(getClass().getResource("profile.fxml"));
+			String address = new File("target/classes/cinemaspace/view/profile.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
 			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
@@ -114,7 +119,9 @@ public class FXMLControllerProfile {
 	
 	@FXML protected void handleDisconnectionButtonAction (ActionEvent event) {
 		try {
-			root = FXMLLoader.load(getClass().getResource("connection.fxml"));
+			String address = new File("target/classes/cinemaspace/view/connection.fxml").getAbsolutePath();
+			FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
+			root = load.load();
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
 		} catch (IOException e) {
@@ -130,7 +137,9 @@ public class FXMLControllerProfile {
 			alert.setContentText("Your account has been successfully closed.");
 			alert.showAndWait();
 			try {
-				root = FXMLLoader.load(getClass().getResource("connection.fxml"));
+				String address = new File("target/classes/cinemaspace/view/connection.fxml").getAbsolutePath();
+				FXMLLoader load = new FXMLLoader(new File(address).toURI().toURL());
+				root = load.load();
 				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				stage.setScene(new Scene(root));
 			} catch (IOException e) {
