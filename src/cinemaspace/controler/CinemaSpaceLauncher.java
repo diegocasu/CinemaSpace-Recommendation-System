@@ -24,7 +24,7 @@ public class CinemaSpaceLauncher extends Application {
 		try {
 			LocalConfigurationParameters.retrieveLocalConfiguration();
 			CinemaSpaceArchive.openConnection(LocalConfigurationParameters.connectionString);
-			String address = new File("target/classes/cinemaspace/view/connection.fxml").getAbsolutePath();
+			String address = new File("target/classes/cinemaspace/view/welcome.fxml").getAbsolutePath();
 			Parent root = new FXMLLoader(new File(address).toURI().toURL()).load();
 			Scene sceneConnection = new Scene(root);
 			stage.setTitle("CinemaSpace");
