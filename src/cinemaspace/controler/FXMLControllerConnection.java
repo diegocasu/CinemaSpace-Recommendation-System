@@ -81,10 +81,10 @@ public class FXMLControllerConnection {
 			email = emailSignUp.getText();
 			if(isValidDateOfBirth(dateOfBirth) && isValidEmail(email)) {
 				if(maleSignUp.isSelected()) {
-					user = new User(usernameSignUp.getText(), passwordSignUp.getText(), emailSignUp.getText(), dateOfBirthSignUp.getText(), "Male", false);
+					user = new User(null, usernameSignUp.getText(), passwordSignUp.getText(), emailSignUp.getText(), dateOfBirthSignUp.getText(), "Male", false);
 				}
 				else if(femaleSignUp.isSelected()) {
-					user = new User(usernameSignUp.getText(), passwordSignUp.getText(), emailSignUp.getText(), dateOfBirthSignUp.getText(), "Female", false);
+					user = new User(null, usernameSignUp.getText(), passwordSignUp.getText(), emailSignUp.getText(), dateOfBirthSignUp.getText(), "Female", false);
 				}
 				
 				if(user != null) {

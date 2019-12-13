@@ -217,7 +217,7 @@ public class FXMLControllerAdmin {
 	                String profilePath = member.get("profile_path").textValue();
 	                crew.add(new CrewMember(department, job, name, profilePath));
             	}
-            	films.add(new Film(budget, genres, homePage, originalLanguage, originalTitle, overview, posterPath, 
+            	films.add(new Film(null, budget, genres, homePage, originalLanguage, originalTitle, overview, posterPath, 
             			productionCompanies, productionCountries, releaseDate, revenue, runtime, spokenLanguages, 
             			status, tagline, title, numberOfVisits, keywords, cast, crew, averageRating, numberOfRatings));
 	        }

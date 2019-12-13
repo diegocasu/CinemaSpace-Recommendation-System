@@ -14,7 +14,6 @@ public class User {
 	
 	public User(ObjectId id, String username, String password, String email, 
 				String dateOfBirth, String gender, boolean administrator) {
-		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -24,16 +23,6 @@ public class User {
 		this.administrator = administrator;
 	}	
 	
-	public User(String username, String password, String email, String dateOfBirth, String gender, boolean administrator) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.dateOfBirth = dateOfBirth;
-		this.gender = gender;
-		this.administrator = administrator;
-	}	
-
 	public ObjectId getId() {
 		return id;
 	}

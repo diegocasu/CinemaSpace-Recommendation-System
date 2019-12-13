@@ -62,37 +62,6 @@ public class Film {
 		this.numberOfRatings = numberOfRatings;
 	}
 	
-	public Film(double budget, List<String> genres, String homepage, String originalLanguage,
-			String originalTitle, String overview, String posterPath, List<String> productionCompanies,
-			List<String> productionCountries, String releaseDate, double revenue, double runtime,
-			List<String> spokenLanguages, String status, String tagline, String title, int numberOfVisits,
-			List<String> keywords, List<CastMember> cast, List<CrewMember> crew, 
-			double averageRating, int numberOfRatings) {
-		
-		this.budget = budget;
-		this.genres = genres;
-		this.homepage = homepage;
-		this.originalLanguage = originalLanguage;
-		this.originalTitle = originalTitle;
-		this.overview = overview;
-		this.posterPath = posterPath;
-		this.productionCompanies = productionCompanies;
-		this.productionCountries = productionCountries;
-		this.releaseDate = releaseDate;
-		this.revenue = revenue;
-		this.runtime = runtime;
-		this.spokenLanguages = spokenLanguages;
-		this.status = status;
-		this.tagline = tagline;
-		this.title = title;
-		this.numberOfVisits = numberOfVisits;
-		this.keywords = keywords;
-		this.cast = cast;
-		this.crew = crew;
-		this.averageRating = averageRating;
-		this.numberOfRatings = numberOfRatings;
-	}
-	
 	public ObjectId getId() {
 		return id;
 	}
