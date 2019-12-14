@@ -69,6 +69,7 @@ public class FilmPageController {
 	@FXML private Text country;
 	@FXML private Text language;
 	@FXML private Text budget;
+	@FXML private Text date;
 	@FXML private Text productionCompany;
 	@FXML private ComboBox rate;
 	@FXML private BarChart<String, Number> barRatings;
@@ -341,7 +342,7 @@ public class FilmPageController {
 		
 		title.setText(film.getTitle());
 		runtime.setText(String.valueOf(film.getRuntime()));
-		
+		date.setText(film.getReleaseDate());
 		String genres = "";
 		List<String> list_genre = film.getGenres();
 		for (int i = 0; i < list_genre.size(); i++) {
