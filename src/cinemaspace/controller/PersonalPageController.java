@@ -195,12 +195,19 @@ public class PersonalPageController {
 					pieChart.setVisible(true);
 					pieChart.setTitle("Most Recurrent Genres From " + min + " to " + max);
 					pieElement = CinemaSpaceArchive.generateMostRecurrentGenresByRatingIntervals(user, min, max);
+					
+					int totalRatings = 0;
+					for(int numberOfRatings : pieElement.values())
+						totalRatings += numberOfRatings;
+
 					if(pieChart.getData() != null) {
 						pieChart.getData().clear();
 					}
 					for(Map.Entry<String,Integer> element : pieElement.entrySet()) {
-						pieChart.getData().add(new PieChart.Data(element.getKey(), element.getValue()));
+						String label = element.getKey() + " " + (element.getValue()*100)/totalRatings + "%";
+						pieChart.getData().add(new PieChart.Data(label, element.getValue()));
 					}
+					
 					maxField.setText("");
 					minField.setText("");
 				}

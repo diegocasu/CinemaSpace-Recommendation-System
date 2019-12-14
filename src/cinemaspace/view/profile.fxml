@@ -115,7 +115,7 @@
               <children>
                 <VBox id="VBox" fx:id="boundPart" alignment="CENTER" prefHeight="261.0" prefWidth="266.0" spacing="5.0" style="-fx-alignment:center;" HBox.margin="$x9">
                   <children>
-                    <Text fx:id="boundTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Film's rating">
+                    <Text fx:id="boundTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert a rating interval">
                       <font>
                         <Font name="System Bold Italic" size="15.0" />
                       </font>
@@ -157,7 +157,7 @@
                     <Insets right="50.0" />
                   </HBox.margin>
                 </VBox>
-                <PieChart id="PieChart" fx:id="pieChart" clockwise="true" labelLineLength="20.0" labelsVisible="false" legendSide="BOTTOM" prefHeight="261.0" prefWidth="440.74609375" startAngle="0.0" title="Genres proportion" >
+                <PieChart id="PieChart" fx:id="pieChart" clockwise="true" labelLineLength="20.0" labelsVisible="false" legendSide="RIGHT" prefHeight="561.0" prefWidth="540.74609375" startAngle="0.0" title="Genres proportion" >
                   <HBox.margin>
                     <Insets right="20.0" />
                   </HBox.margin>
