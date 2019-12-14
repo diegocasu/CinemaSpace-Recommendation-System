@@ -71,9 +71,9 @@ public class WelcomePageController {
 	@FXML protected void handleConfirmSignUpButtonAction (ActionEvent event) {
 		if(usernameSignUp.getText().isEmpty() || emailSignUp.getText().isEmpty() || passwordSignUp.getText().isEmpty() || dateOfBirthSignUp.getText().isEmpty()) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error Diaglog");
+			alert.setTitle("Error Dialogue");
 			alert.setHeaderText(null);
-			alert.setContentText("Some fields are still empty, please feed them.");
+			alert.setContentText("Some fields are still empty, please fill them.");
 			alert.showAndWait();
 		}
 		else {
@@ -113,14 +113,14 @@ public class WelcomePageController {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error Dialogue");
 				alert.setHeaderText(null);
-				alert.setContentText("Your date of birth is uncorrect.");
+				alert.setContentText("Your date of birth is incorrect.");
 				alert.showAndWait();
 			}
 			else if (!isValidEmail(email)) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error Dialogue");
 				alert.setHeaderText(null);
-				alert.setContentText("Your email is uncorrect.");
+				alert.setContentText("Your email is incorrect.");
 				alert.showAndWait();
 			}
 			
@@ -130,7 +130,7 @@ public class WelcomePageController {
 	@FXML protected void handleConfirmLoginButtonAction (ActionEvent event) {
 		if(emailLogin.getText().isEmpty() || passwordLogin.getText().isEmpty()) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error Diaglog");
+			alert.setTitle("Error Dialogue");
 			alert.setHeaderText(null);
 			alert.setContentText("Some fields are still empty, please fill in them.");
 			alert.showAndWait();
@@ -165,7 +165,7 @@ public class WelcomePageController {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error Dialogue");
 				alert.setHeaderText(null);
-				alert.setContentText("Your email is uncorrect.");
+				alert.setContentText("Your email is incorrect.");
 				alert.showAndWait();
 			}
 		}
