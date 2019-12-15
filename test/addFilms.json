@@ -1,12 +1,11 @@
 [{
-	"_id":{"$oid":"5de0ca2109c85f7e66a01c6b"},
 	"budget":30000000,
 	"genres":["Animation","Comedy","Family"],
 	"homepage":"http://toystory.disney.com/toy-story",
 	"original_language":"en",
 	"original_title":"Toy Story",
 	"overview":"Led by Woody, Andy's toys live happily in his room until Andy's birthday brings Buzz Lightyear onto the scene. Afraid of losing his place in Andy's heart, Woody plots against Buzz. But when circumstances separate Buzz and Woody from their owner, the duo eventually learns to put aside their differences.",
-	"poster_path":"/rhIRbceoE9lR4veEXuwCC2wARtG.jpg",
+	"poster_path":"",
 	"production_companies":["Pixar Animation Studios"],
 	"production_countries":["United States of America"],
 	"release_date":"1995-10-30",
@@ -16,8 +15,7 @@
 	"status":"Released",
 	"tagline":"",
 	"title":"Toy Story",
-	"number_of_visits":48011,
-	"keywords":["jealousy","toy","boy","friendship","friends","rivalry","boy next door","new toy","toy comes to life","Toy Story"],
+	"keywords":["jealousy","toy","boy","friendship","friends","rivalry","boy next door","new toy","toy comes to life","Toy Story", "test"],
 	"cast":[
 		{"character":"Woody (voice)","name":"Tom Hanks","order":0,"profile_path":"/pQFoyx7rp09CJTAb932F2g8Nlho.jpg"},
 		{"character":"Buzz Lightyear (voice)","name":"Tim Allen","order":1,"profile_path":"/uX2xVf6pMmPepxnvFWyBtjexzgY.jpg"},
@@ -142,7 +140,40 @@
 		{"department":"Production","job":"Casting Consultant","name":"Ruth Lambert","profile_path":""},
 		{"department":"Production","job":"ADR Voice Casting","name":"Mickie McGowan","profile_path":"/k7TjJBfINsg8vLQxJwos6XObAD6.jpg"}
 	]
+},
+{
+	"budget":97000000,
+	"genres":["Horror","Sci-Fi","Thriller"],
+	"homepage":"http://www.alien-covenant.com/",
+	"original_language":"en",
+	"original_title":"Alien: Covenant",
+	"overview":"Almost eleven years after the disastrous expedition to the distant moon LV-223, the deep-space colonisation vessel Covenant, with more than 2,000 colonists in cryogenic hibernation, is on course for the remote planet Origae-6 with the intention to build a new world. Instead, a rogue transmission entices the crew to a nearby habitable planet which resembles Earth. The unsuspecting crewmembers of the Covenant will have to cope with biological foes beyond human comprehension. Ultimately, what was intended as a peaceful exploratory mission, will soon turn into a desperate rescue operation in uncharted space.",
+	"poster_path":"",
+	"production_companies":["Twentieth Century Fox", "TSG Entertainment", "Scott Free Productions"],
+	"production_countries":["USA", "UK"],
+	"release_date":"2017-5-11",
+	"revenue":240891763,
+	"runtime":122.0,
+	"spoken_languages":["English"],
+	"status":"Released",
+	"tagline":"Witness the Creation of Fear.",
+	"title":"Alien: Covenant",
+	"number_of_visits":0,
+	"keywords":["xenomorph","alien", "android", "future", "alien technology", "horror", "Alien: Covenant", "test"],
+	"cast":[
+		{"character":"David / Walter","name":"Michael Fassbender","order":0,"profile_path":""},
+		{"character":"Daniels","name":"Katherine Waterston","order":1,"profile_path":""},
+		{"character":"Oram","name":"Billy Crudup","order":2,"profile_path":""},
+		{"character":"Tennessee","name":"Danny McBride","order":3,"profile_path":""}
+	],
+	"crew":[
+		{"department":"Directing","job":"Director","name":"Ridley Scott","profile_path":""},
+		{"department":"Writing","job":"Screenplay","name":"Dan O'Bannon ","profile_path":""},
+		{"department":"Writing","job":"Screenplay","name":"Jack Paglen","profile_path":""},
+		{"department":"Writing","job":"Screenplay","name":"Michael Green","profile_path":""}
+	]
 }]
+
 		
 		
 

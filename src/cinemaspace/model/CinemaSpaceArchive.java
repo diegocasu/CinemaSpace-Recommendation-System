@@ -430,11 +430,13 @@ public class CinemaSpaceArchive {
 				Document ratingDocument = cursor.next();
 				
 				// Statistics grouped by age only (both males and females)
-	
-				Document averageTotal = ((List<Document>)ratingDocument.get("groupTotal")).get(0);
-				ratingDistribution.replace("All_18", averageTotal.getDouble("averageLessThan18"));
-				ratingDistribution.replace("All_18_45", averageTotal.getDouble("average18_45"));
-				ratingDistribution.replace("All_45", averageTotal.getDouble("averageMoreThan45"));
+				
+				if(((List<Document>)ratingDocument.get("groupTotal")).size() > 0) {
+					Document averageTotal = ((List<Document>)ratingDocument.get("groupTotal")).get(0);
+					ratingDistribution.replace("All_18", averageTotal.getDouble("averageLessThan18"));
+					ratingDistribution.replace("All_18_45", averageTotal.getDouble("average18_45"));
+					ratingDistribution.replace("All_45", averageTotal.getDouble("averageMoreThan45"));
+				}
 
 				// Statistics grouped by age and gender
 				
