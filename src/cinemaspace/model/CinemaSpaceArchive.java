@@ -231,7 +231,7 @@ public class CinemaSpaceArchive {
 		clientConnection.close();
 	}
 	
-	public static boolean addUser(User user) {
+	public static boolean addUser(User user) throws SignUpException {
 		MongoCollection<Document> userCollection = cinemaSpaceDatabase.getCollection("User");
 		boolean querySuccess = false;
 				
@@ -240,8 +240,8 @@ public class CinemaSpaceArchive {
 			long userSignedUp = userCollection.countDocuments(Filters.and(Filters.eq("email", user.getEmail()),
 																		  Filters.eq("password", user.getPassword())));
 			
-			if(userSignedUp > 0)
-				return querySuccess;
+			if(userSignedUp > 0) 
+				throw new SignUpException();
 				
 			Document newUser = new Document("username", user.getUsername())
 					   .append("password", user.getPassword())
@@ -253,14 +253,14 @@ public class CinemaSpaceArchive {
 			userCollection.insertOne(newUser);
 			querySuccess = true;
 			
-		} catch(Exception exception) {
+		} catch(MongoException exception) {
 			exception.printStackTrace();
 		}
 		
 		return querySuccess;
 	}
 	
-	public static User login(String email, String password) {
+	public static User login(String email, String password) throws LoginException {
 		MongoCollection<Document> userCollection = cinemaSpaceDatabase.getCollection("User");
 		User loggedUser = null;
 		
@@ -269,7 +269,7 @@ public class CinemaSpaceArchive {
 																	Filters.eq("password", password))).first();
 			
 			if(userSignedUp == null)
-				return loggedUser;
+				throw new LoginException();
 						
 			loggedUser = new User(userSignedUp.getObjectId("_id"),
 								  userSignedUp.getString("username"), 
@@ -279,7 +279,7 @@ public class CinemaSpaceArchive {
 								  userSignedUp.getString("gender"), 
 								  userSignedUp.getBoolean("administrator"));
 
-		} catch(Exception exception) {
+		} catch(MongoException exception) {
 			exception.printStackTrace();
 		}	
 			

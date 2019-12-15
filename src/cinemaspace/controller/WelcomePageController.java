@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 import cinemaspace.model.CinemaSpaceArchive;
+import cinemaspace.model.LoginException;
+import cinemaspace.model.SignUpException;
 import cinemaspace.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -88,7 +90,22 @@ public class WelcomePageController {
 				}
 				
 				if(user != null) {
-					if(CinemaSpaceArchive.addUser(user)) {
+					boolean insertionSuccess = false;
+					
+					try {
+						insertionSuccess = CinemaSpaceArchive.addUser(user);
+
+					} catch (SignUpException exception) {
+						exception.printStackTrace();
+						Alert alertSignUp = new Alert(AlertType.ERROR);
+						alertSignUp.setTitle("Error Dialogue");
+						alertSignUp.setHeaderText(null);
+						alertSignUp.setContentText("A user with the same email and password is registered. Please change them.");
+						alertSignUp.showAndWait();
+						return;
+					}
+					
+					if(insertionSuccess) {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Information Dialogue");
 						alert.setHeaderText(null);
@@ -138,7 +155,18 @@ public class WelcomePageController {
 		else {
 			email = emailLogin.getText();
 			if(isValidEmail(email)) {
-				user = CinemaSpaceArchive.login(email, passwordLogin.getText());
+				try {
+					user = CinemaSpaceArchive.login(email, passwordLogin.getText());
+				} catch (LoginException exception) {
+					exception.printStackTrace();
+					Alert alertLogin = new Alert(AlertType.ERROR);
+					alertLogin.setTitle("Error Dialogue");
+					alertLogin.setHeaderText(null);
+					alertLogin.setContentText("There aren't registered users with the given credentials.");
+					alertLogin.showAndWait();
+					return;
+				}	
+				
 				try {
 					if(user != null) {
 						String address = new File("target/classes/cinemaspace/view/home.fxml").getAbsolutePath();
