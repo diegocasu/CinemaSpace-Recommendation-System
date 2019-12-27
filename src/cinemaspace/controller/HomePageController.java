@@ -97,7 +97,6 @@ public class HomePageController {
 			searchBar.setText("");
 		}
 		
-		//TEST
 		listOfFilms = new ArrayList<Film>();
 	}
 	
