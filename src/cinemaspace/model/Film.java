@@ -153,5 +153,8 @@ public class Film {
 	public int getNumberOfRatings() {
 		return numberOfRatings;
 	}
-		
+	
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
 }

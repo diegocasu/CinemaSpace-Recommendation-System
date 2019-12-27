@@ -17,7 +17,10 @@ public class LocalConfigurationParameters {
     private static final String XMLConfigurationFilePath = "./configuration.xml";
     private static final String XSDConfigurationFilePath = "./configuration.xsd";
     
-    public static String connectionString = "";
+    public static String mainArchiveConnectionString = "";
+    public static String recommendationArchiveConnectionString = "" ;
+	public static String recommendationArchiveUser = "";
+	public static String recommendationArchivePassword = "";
     
     private static Document validateXMLConfiguration(){
         Document configurationDocument;
@@ -42,13 +45,7 @@ public class LocalConfigurationParameters {
         return configurationDocument;
     }
     
-    
-    public static boolean retrieveLocalConfiguration() {
-    	Document configurationDocument = validateXMLConfiguration();
-    	
-        if (configurationDocument == null)
-            return false;
-        
+    private static void setMainArchiveConnectionString(Document configurationDocument) {
         NodeList replicaSet = configurationDocument.getElementsByTagName("replica");
         String replicaName = configurationDocument.getElementsByTagName("replicaName").item(0).getTextContent();
         
@@ -61,10 +58,32 @@ public class LocalConfigurationParameters {
           
           replicasAddress.add(addressDBMS + ":" + portDBMS);
         }
-         
-        connectionString += String.join(",", replicasAddress);
-        connectionString += "/?replicaSet=" + replicaName;
-
+ 
+        mainArchiveConnectionString += String.join(",", replicasAddress);
+        mainArchiveConnectionString += "/?replicaSet=" + replicaName;
+    }
+    
+    private static void setRecommendationArchiveConnectionString(Document configurationDocument) {
+    	NodeList recommendationArchiveNode = configurationDocument.getElementsByTagName("recommendationArchive");
+    	Element recommendationArchiveParameters = (Element) recommendationArchiveNode.item(0);
+    	
+    	recommendationArchiveUser = recommendationArchiveParameters.getElementsByTagName("user").item(0).getTextContent();
+    	recommendationArchivePassword = recommendationArchiveParameters.getElementsByTagName("password").item(0).getTextContent();
+        
+    	recommendationArchiveConnectionString = recommendationArchiveParameters.getElementsByTagName("addressDBMS").item(0).getTextContent() +
+    											":" +
+    											recommendationArchiveParameters.getElementsByTagName("portDBMS").item(0).getTextContent();
+    }
+    
+    public static boolean retrieveLocalConfiguration() {
+    	Document configurationDocument = validateXMLConfiguration();
+    	
+        if (configurationDocument == null)
+            return false;
+        
+        setMainArchiveConnectionString(configurationDocument);
+        setRecommendationArchiveConnectionString(configurationDocument);
+        
         return true;
     }
     

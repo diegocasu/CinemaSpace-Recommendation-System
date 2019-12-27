@@ -25,7 +25,7 @@ public class CinemaSpaceLauncher extends Application {
 	public void start(Stage stage){
 		try {
 			boolean configurationRetrievalSuccess = LocalConfigurationParameters.retrieveLocalConfiguration();
-			
+		
 			if(!configurationRetrievalSuccess) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error Dialogue");
@@ -36,7 +36,20 @@ public class CinemaSpaceLauncher extends Application {
 				System.exit(1);
 			}
 			
-			CinemaSpaceArchive.openConnection(LocalConfigurationParameters.connectionString);
+			boolean connectionEstablished = CinemaSpaceArchive.openConnection(LocalConfigurationParameters.mainArchiveConnectionString, 
+																			LocalConfigurationParameters.recommendationArchiveConnectionString, 
+																			LocalConfigurationParameters.recommendationArchiveUser, 
+																			LocalConfigurationParameters.recommendationArchivePassword);
+			if(!connectionEstablished) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Dialogue");
+				alert.setHeaderText(null);
+				alert.setContentText("There was a problem connecting to the system archive. Please retry later");
+				alert.showAndWait();
+				
+				System.exit(1);
+			}
+			
 			String address = new File("target/classes/cinemaspace/view/welcome.fxml").getAbsolutePath();
 			Parent root = new FXMLLoader(new File(address).toURI().toURL()).load();
 			Scene sceneConnection = new Scene(root);
