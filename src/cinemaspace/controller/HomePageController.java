@@ -238,6 +238,8 @@ public class HomePageController {
 				PersonalPageController controller = load.<PersonalPageController>getController();
 				if(user != null) {
 					controller.initUser(user);
+					controller.initListOfFilmsGenres(user);
+					controller.initListOfFilmsUsers(user);
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

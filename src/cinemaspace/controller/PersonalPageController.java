@@ -131,11 +131,6 @@ public class PersonalPageController {
 		actualPageUsers = 0;
 		maxNbPagesUsers = 0;
 		clearListOfFilmsUsers();
-		
-		listOfFilmsTitlesGenres = CinemaSpaceArchive.requestFilmRecommendationsBasedOnGenre(user);
-		listOfFilmsTitlesUsers = CinemaSpaceArchive.requestFilmRecommendationsBasedOnOtherUsersWithCommonInterests(user);
-		listOfFilmsGenres = initListOfFilmsGenres(listOfFilmsTitlesGenres);
-		listOfFilmsUsers = initListOfFilmsUsers(listOfFilmsTitlesUsers);
 	}
 	
 	@FXML protected void handleHomeButtonAction (ActionEvent event) {
@@ -200,6 +195,8 @@ public class PersonalPageController {
 			controller.initUser(user);
 			if(user != null) {
 				controller.initUser(user);
+				controller.initListOfFilmsGenres(user);
+				controller.initListOfFilmsUsers(user);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -927,20 +924,42 @@ public class PersonalPageController {
 		
 	}
 	
-	public List<Film> initListOfFilmsGenres(List<String> listOfFilmsTitlesGenres) {
-		List<Film> listOfFilms = new ArrayList<Film>();
-		for(String filmId : listOfFilmsTitlesGenres) {
-			listOfFilms.add(CinemaSpaceArchive.getFilm(new ObjectId(filmId)));
+	public void initListOfFilmsGenres(User user) {
+		this.listOfFilmsTitlesGenres = CinemaSpaceArchive.requestFilmRecommendationsBasedOnGenre(user);
+		if(this.listOfFilmsGenres != null) {
+			this.listOfFilmsGenres = new ArrayList<Film>();
+			for(String filmId : this.listOfFilmsTitlesGenres) {
+				this.listOfFilmsGenres.add(CinemaSpaceArchive.getFilm(new ObjectId(filmId)));
+			}
+			if(this.listOfFilmsGenres != null) {
+				try {
+					displayListOfFilmsGenres();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
-		return listOfFilms;
 	}
 	
-	public List<Film> initListOfFilmsUsers(List<String> listOfFilmsTitlesUsers) {
-		List<Film> listOfFilms = new ArrayList<Film>();
-		for(String filmId : listOfFilmsTitlesUsers) {
-			listOfFilms.add(CinemaSpaceArchive.getFilm(new ObjectId(filmId)));
+	public void initListOfFilmsUsers(User user) {
+		this.listOfFilmsTitlesUsers = CinemaSpaceArchive.requestFilmRecommendationsBasedOnOtherUsersWithCommonInterests(user);
+		if(this.listOfFilmsTitlesUsers != null) {
+			this.listOfFilmsUsers = new ArrayList<Film>();
+			for(String filmId : this.listOfFilmsTitlesUsers) {
+				this.listOfFilmsUsers.add(CinemaSpaceArchive.getFilm(new ObjectId(filmId)));
+				
+				System.out.println(CinemaSpaceArchive.getFilm(new ObjectId(filmId)).getTitle());
+			}
+			if(this.listOfFilmsUsers != null) {
+				try {
+					displayListOfFilmsUsers();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
-		return listOfFilms;
 	}
 	
 }
