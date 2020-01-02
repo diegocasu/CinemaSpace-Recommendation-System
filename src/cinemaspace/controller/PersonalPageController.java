@@ -930,7 +930,7 @@ public class PersonalPageController {
 		if(this.listOfFilmsTitlesGenres != null) {
 			this.listOfFilmsGenres = new ArrayList<Film>();
 			for(String filmId : this.listOfFilmsTitlesGenres) {
-				this.listOfFilmsGenres.add(CinemaSpaceArchive.getFilm(new ObjectId(new String(filmId))));
+				this.listOfFilmsGenres.add(CinemaSpaceArchive.getFilm(new ObjectId(new String(filmId.substring(1, filmId.length()-1)))));
 			}
 			if(this.listOfFilmsGenres != null) {
 				try {
@@ -963,7 +963,7 @@ public class PersonalPageController {
 		if(this.listOfFilmsTitlesUsers != null) {
 			this.listOfFilmsUsers = new ArrayList<Film>();
 			for(String filmId : this.listOfFilmsTitlesUsers) {
-				this.listOfFilmsUsers.add(CinemaSpaceArchive.getFilm(new ObjectId(filmId)));
+				this.listOfFilmsUsers.add(CinemaSpaceArchive.getFilm(new ObjectId(filmId.substring(1, filmId.length()-1))));
 			}
 			if(this.listOfFilmsUsers != null) {
 				try {
