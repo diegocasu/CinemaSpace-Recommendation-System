@@ -77,10 +77,10 @@ public class PersonalPageController {
 	@FXML private Text titleFilm2Genres;
 	@FXML private VBox film3Genres;
 	@FXML private ImageView posterFilm3Genres;
-	@FXML private Text titleFilm3;
+	@FXML private Text titleFilm3Genres;
 	@FXML private VBox film4Genres;
 	@FXML private ImageView posterFilm4Genres;
-	@FXML private Text titleFilm4;
+	@FXML private Text titleFilm4Genres;
 	@FXML private Button previousButtonGenres;
 	@FXML private Button nextButtonGenres;
 	
@@ -515,12 +515,11 @@ public class PersonalPageController {
 		URL url;
 		
 		//FILM 1
-		if(8*(actualPageGenres-1) < maxNbFilmsGenres) {
-			film1Genres.setVisible(true);
-			titleFilm1Genres.setText(listOfFilmsGenres.get(8*(actualPageGenres-1)).getTitle());
+		if(4*(actualPageGenres-1) < maxNbFilmsGenres) {
+			titleFilm1Genres.setText(listOfFilmsGenres.get(4*(actualPageGenres-1)).getTitle());
 			titleFilm1Genres.setWrappingWidth(170.0);
 			try {
-				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsGenres.get(8*(actualPageGenres-1)).getPosterPath());
+				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsGenres.get(4*(actualPageGenres-1)).getPosterPath());
 				try {
 					posterFilm1Genres.setImage(SwingFXUtils.toFXImage(ImageIO.read(url), null));
 				} catch (IOException e) {
@@ -533,18 +532,19 @@ public class PersonalPageController {
 				InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
 				posterFilm1Genres.setImage(new Image(is));
 			}
+			film1Genres.setVisible(true);
 		}
 		else {
 			film1Genres.setVisible(false);
 		}
 		
 		//FILM 2
-		if(8*(actualPageGenres-1)+1 < maxNbFilmsGenres) {
-			film2Genres.setVisible(true);
-			titleFilm2Genres.setText(listOfFilmsGenres.get(8*(actualPageGenres-1)+1).getTitle());
+		
+		if(4*(actualPageGenres-1)+1 < maxNbFilmsGenres) {
+			titleFilm2Genres.setText(listOfFilmsGenres.get(4*(actualPageGenres-1)+1).getTitle());
 			titleFilm2Genres.setWrappingWidth(170.0);
 			try {
-				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsGenres.get(8*(actualPageGenres-1)+1).getPosterPath());
+				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsGenres.get(4*(actualPageGenres-1)+1).getPosterPath());
 				try {
 					posterFilm2Genres.setImage(SwingFXUtils.toFXImage(ImageIO.read(url), null));
 				} catch (IOException e) {
@@ -557,18 +557,18 @@ public class PersonalPageController {
 				InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
 				posterFilm2Genres.setImage(new Image(is));
 			}
+			film2Genres.setVisible(true);
 		}
 		else {
 			film2Genres.setVisible(false);
 		}
 		
 		//FILM 3
-		if(8*(actualPageGenres-1)+2 < maxNbFilmsGenres) {
-			film3Genres.setVisible(true);
-			titleFilm3.setText(listOfFilmsGenres.get(8*(actualPageGenres-1)+2).getTitle());
-			titleFilm3.setWrappingWidth(170.0);
+		if(4*(actualPageGenres-1)+2 < maxNbFilmsGenres) {
+			titleFilm3Genres.setText(listOfFilmsGenres.get(4*(actualPageGenres-1)+2).getTitle());
+			titleFilm3Genres.setWrappingWidth(170.0);
 			try {
-				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsGenres.get(8*(actualPageGenres-1)+2).getPosterPath());
+				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsGenres.get(4*(actualPageGenres-1)+2).getPosterPath());
 				try {
 					posterFilm3Genres.setImage(SwingFXUtils.toFXImage(ImageIO.read(url), null));
 				} catch (IOException e) {
@@ -581,18 +581,18 @@ public class PersonalPageController {
 				InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
 				posterFilm3Genres.setImage(new Image(is));
 			}
+			film3Genres.setVisible(true);
 		}
 		else {
 			film3Genres.setVisible(false);
 		}
 		
 		//FILM 4
-		if(8*(actualPageGenres-1)+3 < maxNbFilmsGenres) {
-			film4Genres.setVisible(true);
-			titleFilm4.setText(listOfFilmsGenres.get(8*(actualPageGenres-1)+3).getTitle());
-			titleFilm4.setWrappingWidth(170.0);
+		if(4*(actualPageGenres-1)+3 < maxNbFilmsGenres) {
+			titleFilm4Genres.setText(listOfFilmsGenres.get(4*(actualPageGenres-1)+3).getTitle());
+			titleFilm4Genres.setWrappingWidth(170.0);
 			try {
-				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsGenres.get(8*(actualPageGenres-1)+3).getPosterPath());
+				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsGenres.get(4*(actualPageGenres-1)+3).getPosterPath());
 				try {
 					posterFilm4Genres.setImage(SwingFXUtils.toFXImage(ImageIO.read(url), null));
 				} catch (IOException e) {
@@ -605,6 +605,7 @@ public class PersonalPageController {
 				InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
 				posterFilm4Genres.setImage(new Image(is));
 			}
+			film4Genres.setVisible(true);
 		}
 		else {
 			film4Genres.setVisible(false);
@@ -809,12 +810,11 @@ public class PersonalPageController {
 		URL url;
 		
 		//FILM 1
-		if(8*(actualPageUsers-1) < maxNbFilmsUsers) {
-			film1Users.setVisible(true);
-			titleFilm1Users.setText(listOfFilmsUsers.get(8*(actualPageUsers-1)).getTitle());
+		if(4*(actualPageUsers-1) < maxNbFilmsUsers) {
+			titleFilm1Users.setText(listOfFilmsUsers.get(4*(actualPageUsers-1)).getTitle());
 			titleFilm1Users.setWrappingWidth(170.0);
 			try {
-				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsUsers.get(8*(actualPageUsers-1)).getPosterPath());
+				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsUsers.get(4*(actualPageUsers-1)).getPosterPath());
 				try {
 					posterFilm1Users.setImage(SwingFXUtils.toFXImage(ImageIO.read(url), null));
 				} catch (IOException e) {
@@ -827,18 +827,18 @@ public class PersonalPageController {
 				InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
 				posterFilm1Users.setImage(new Image(is));
 			}
+			film1Users.setVisible(true);
 		}
 		else {
 			film1Users.setVisible(false);
 		}
 		
 		//FILM 2
-		if(8*(actualPageUsers-1)+1 < maxNbFilmsUsers) {
-			film2Users.setVisible(true);
-			titleFilm2Users.setText(listOfFilmsUsers.get(8*(actualPageUsers-1)+1).getTitle());
+		if(4*(actualPageUsers-1)+1 < maxNbFilmsUsers) {
+			titleFilm2Users.setText(listOfFilmsUsers.get(4*(actualPageUsers-1)+1).getTitle());
 			titleFilm2Users.setWrappingWidth(170.0);
 			try {
-				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsUsers.get(8*(actualPageUsers-1)+1).getPosterPath());
+				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsUsers.get(4*(actualPageUsers-1)+1).getPosterPath());
 				try {
 					posterFilm2Users.setImage(SwingFXUtils.toFXImage(ImageIO.read(url), null));
 				} catch (IOException e) {
@@ -851,18 +851,18 @@ public class PersonalPageController {
 				InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
 				posterFilm2Users.setImage(new Image(is));
 			}
+			film2Users.setVisible(true);
 		}
 		else {
 			film2Users.setVisible(false);
 		}
 		
 		//FILM 3
-		if(8*(actualPageUsers-1)+2 < maxNbFilmsUsers) {
-			film3Users.setVisible(true);
-			titleFilm3.setText(listOfFilmsUsers.get(8*(actualPageUsers-1)+2).getTitle());
-			titleFilm3.setWrappingWidth(170.0);
+		if(4*(actualPageUsers-1)+2 < maxNbFilmsUsers) {
+			titleFilm3Users.setText(listOfFilmsUsers.get(4*(actualPageUsers-1)+2).getTitle());
+			titleFilm3Users.setWrappingWidth(170.0);
 			try {
-				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsUsers.get(8*(actualPageUsers-1)+2).getPosterPath());
+				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsUsers.get(4*(actualPageUsers-1)+2).getPosterPath());
 				try {
 					posterFilm3Users.setImage(SwingFXUtils.toFXImage(ImageIO.read(url), null));
 				} catch (IOException e) {
@@ -875,18 +875,18 @@ public class PersonalPageController {
 				InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
 				posterFilm3Users.setImage(new Image(is));
 			}
+			film3Users.setVisible(true);
 		}
 		else {
 			film3Users.setVisible(false);
 		}
 		
 		//FILM 4
-		if(8*(actualPageUsers-1)+3 < maxNbFilmsUsers) {
-			film4Users.setVisible(true);
-			titleFilm4.setText(listOfFilmsUsers.get(8*(actualPageUsers-1)+3).getTitle());
-			titleFilm4.setWrappingWidth(170.0);
+		if(4*(actualPageUsers-1)+3 < maxNbFilmsUsers) {
+			titleFilm4Users.setText(listOfFilmsUsers.get(4*(actualPageUsers-1)+3).getTitle());
+			titleFilm4Users.setWrappingWidth(170.0);
 			try {
-				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsUsers.get(8*(actualPageUsers-1)+3).getPosterPath());
+				url = new URL("https://image.tmdb.org/t/p/w154/" + listOfFilmsUsers.get(4*(actualPageUsers-1)+3).getPosterPath());
 				try {
 					posterFilm4Users.setImage(SwingFXUtils.toFXImage(ImageIO.read(url), null));
 				} catch (IOException e) {
@@ -899,6 +899,7 @@ public class PersonalPageController {
 				InputStream is = new FileInputStream("target/classes/cinemaspace/view/nophoto.jpg");
 				posterFilm4Users.setImage(new Image(is));
 			}
+			film4Users.setVisible(true);
 		}
 		else {
 			film4Users.setVisible(false);
@@ -926,13 +927,28 @@ public class PersonalPageController {
 	
 	public void initListOfFilmsGenres(User user) {
 		this.listOfFilmsTitlesGenres = CinemaSpaceArchive.requestFilmRecommendationsBasedOnGenre(user);
-		if(this.listOfFilmsGenres != null) {
+		if(this.listOfFilmsTitlesGenres != null) {
 			this.listOfFilmsGenres = new ArrayList<Film>();
 			for(String filmId : this.listOfFilmsTitlesGenres) {
-				this.listOfFilmsGenres.add(CinemaSpaceArchive.getFilm(new ObjectId(filmId)));
+				this.listOfFilmsGenres.add(CinemaSpaceArchive.getFilm(new ObjectId(new String(filmId))));
 			}
 			if(this.listOfFilmsGenres != null) {
 				try {
+					actualPageGenres = 1;
+					maxNbFilmsGenres = listOfFilmsGenres.size();
+					maxNbPagesGenres = (int) Math.floor(listOfFilmsGenres.size()/4);
+					if (listOfFilmsGenres.size()%4 != 0) {
+						maxNbPagesGenres++;
+					}	
+					if(!previousButtonGenres.isDisabled()) {
+						previousButtonGenres.setDisable(true);
+					}
+					if(maxNbPagesGenres == 1) {
+						nextButtonGenres.setDisable(true);
+					}
+					else {
+						nextButtonGenres.setDisable(false);
+					}
 					displayListOfFilmsGenres();
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -948,11 +964,24 @@ public class PersonalPageController {
 			this.listOfFilmsUsers = new ArrayList<Film>();
 			for(String filmId : this.listOfFilmsTitlesUsers) {
 				this.listOfFilmsUsers.add(CinemaSpaceArchive.getFilm(new ObjectId(filmId)));
-				
-				System.out.println(CinemaSpaceArchive.getFilm(new ObjectId(filmId)).getTitle());
 			}
 			if(this.listOfFilmsUsers != null) {
 				try {
+					actualPageUsers = 1;
+					maxNbFilmsUsers = listOfFilmsGenres.size();
+					maxNbPagesUsers = (int) Math.floor(listOfFilmsGenres.size()/4);
+					if (listOfFilmsUsers.size()%4 != 0) {
+						maxNbPagesUsers++;
+					}
+					if(!previousButtonUsers.isDisabled()) {
+						previousButtonUsers.setDisable(true);
+					}
+					if(maxNbPagesUsers == 1) {
+						nextButtonUsers.setDisable(true);
+					}
+					else {
+						nextButtonUsers.setDisable(false);
+					}
 					displayListOfFilmsUsers();
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
