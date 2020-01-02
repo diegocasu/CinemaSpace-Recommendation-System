@@ -178,25 +178,25 @@
                     <VBox id="film_1" fx:id="film1Genres" prefHeight="275.0" prefWidth="200.0" style="-fx-alignment:center;">
                       <children>
                         <ImageView id="" fx:id="posterFilm1Genres" fitHeight="250.0" fitWidth="170.0" onMouseClicked="#handleFilm1PosterGenresAction" pickOnBounds="true" preserveRatio="true" />
-                        <Text id="title_film_1" fx:id="titleFilm1Genres" onMouseClicked="#handleFilm1TitleGenresAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title1" />
+                        <Text id="title_film_1" fx:id="titleFilm1Genres" textAlignment="CENTER" onMouseClicked="#handleFilm1TitleGenresAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title1" />
                       </children>
                     </VBox>
                     <VBox id="film_2" fx:id="film2Genres" prefHeight="275.0" prefWidth="200.0" style="-fx-alignment:center;">
                       <children>
                         <ImageView id="poster_film_2" fx:id="posterFilm2Genres" fitHeight="250.0" fitWidth="170.0" onMouseClicked="#handleFilm2PosterGenresAction" pickOnBounds="true" preserveRatio="true" />
-                        <Text id="title_film_2" fx:id="titleFilm2Genres" onMouseClicked="#handleFilm2TitleGenresAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title2" />
+                        <Text id="title_film_2" fx:id="titleFilm2Genres" textAlignment="CENTER" onMouseClicked="#handleFilm2TitleGenresAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title2" />
                       </children>
                     </VBox>
                     <VBox id="film_3" fx:id="film3Genres" prefHeight="275.0" prefWidth="200.0" style="-fx-alignment:center;">
                       <children>
                         <ImageView id="poster_film_3" fx:id="posterFilm3Genres" fitHeight="250.0" fitWidth="170.0" onMouseClicked="#handleFilm3PosterGenresAction" pickOnBounds="true" preserveRatio="true" />
-                        <Text id="titel_film_2" fx:id="titleFilm3Genres" onMouseClicked="#handleFilm3TitleGenresAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title3" />
+                        <Text id="titel_film_2" fx:id="titleFilm3Genres" textAlignment="CENTER" onMouseClicked="#handleFilm3TitleGenresAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title3" />
                       </children>
                     </VBox>
                     <VBox id="film_4" fx:id="film4Genres" prefHeight="275.0" prefWidth="200.0" style="-fx-alignment:center;">
                       <children>
                         <ImageView id="poster_film_4" fx:id="posterFilm4Genres" fitHeight="250.0" fitWidth="170.0" onMouseClicked="#handleFilm4PosterGenresAction" pickOnBounds="true" preserveRatio="true" />
-                        <Text id="title_film_4" fx:id="titleFilm4Genres" onMouseClicked="#handleFilm4TitleGenresAction" scaleX="1.0" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title4" />
+                        <Text id="title_film_4" fx:id="titleFilm4Genres" textAlignment="CENTER" onMouseClicked="#handleFilm4TitleGenresAction" scaleX="1.0" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title4" />
                       </children>
                     </VBox>
                   </children>
@@ -225,25 +225,25 @@
                     <VBox id="film_1" fx:id="film1Users" prefHeight="275.0" prefWidth="200.0" style="-fx-alignment:center;">
                       <children>
                         <ImageView id="" fx:id="posterFilm1Users" fitHeight="250.0" fitWidth="170.0" onMouseClicked="#handleFilm1PosterUsersAction" pickOnBounds="true" preserveRatio="true" />
-                        <Text id="title_film_1" fx:id="titleFilm1Users" onMouseClicked="#handleFilm1TitleUsersAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title1" />
+                        <Text id="title_film_1" fx:id="titleFilm1Users" textAlignment="CENTER" onMouseClicked="#handleFilm1TitleUsersAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title1" />
                       </children>
                     </VBox>
                     <VBox id="film_2" fx:id="film2Users" prefHeight="275.0" prefWidth="200.0" style="-fx-alignment:center;">
                       <children>
                         <ImageView id="poster_film_2" fx:id="posterFilm2Users" fitHeight="250.0" fitWidth="170.0" onMouseClicked="#handleFilm2PosterUsersAction" pickOnBounds="true" preserveRatio="true" />
-                        <Text id="title_film_2" fx:id="titleFilm2Users" onMouseClicked="#handleFilm2TitleUsersAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title2" />
+                        <Text id="title_film_2" fx:id="titleFilm2Users" textAlignment="CENTER" onMouseClicked="#handleFilm2TitleUsersAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title2" />
                       </children>
                     </VBox>
                     <VBox id="film_3" fx:id="film3Users" prefHeight="275.0" prefWidth="200.0" style="-fx-alignment:center;">
                       <children>
                         <ImageView id="poster_film_3" fx:id="posterFilm3Users" fitHeight="250.0" fitWidth="170.0" onMouseClicked="#handleFilm3PosterUsersAction" pickOnBounds="true" preserveRatio="true" />
-                        <Text id="titel_film_2" fx:id="titleFilm3Users" onMouseClicked="#handleFilm3TitleUsersAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title3" />
+                        <Text id="titel_film_2" fx:id="titleFilm3Users" textAlignment="CENTER" onMouseClicked="#handleFilm3TitleUsersAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Title3" />
                       </children>
                     </VBox>
                     <VBox id="film_4" fx:id="film4Users" prefHeight="275.0" prefWidth="200.0" style="-fx-alignment:center;">
                       <children>
                         <ImageView id="poster_film_4" fx:id="posterFilm4Users" fitHeight="250.0" fitWidth="170.0" onMouseClicked="#handleFilm4PosterUsersAction" pickOnBounds="true" preserveRatio="true" />
-                        <Text id="title_film_4" fx:id="titleFilm4Users" onMouseClicked="#handleFilm4TitleUsersAction" scaleX="1.0" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title4" />
+                        <Text id="title_film_4" fx:id="titleFilm4Users" textAlignment="CENTER" onMouseClicked="#handleFilm4TitleUsersAction" scaleX="1.0" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title4" />
                       </children>
                     </VBox>
                   </children>
