@@ -156,7 +156,7 @@
                         </Button>
                       </children>
                     </VBox>
-                    <PieChart id="PieChart" fx:id="pieChart" clockwise="true" labelLineLength="20.0" labelsVisible="false" legendSide="RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="245.0" prefWidth="540.74609375" startAngle="0.0" title="Genres proportion">
+                    <PieChart id="PieChart" fx:id="pieChart" clockwise="true" labelLineLength="20.0" labelsVisible="false" legendSide="RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="245.0" prefWidth="640.74609375" startAngle="0.0" title="Genres proportion">
                       <HBox.margin>
                         <Insets right="20.0" />
                       </HBox.margin>
