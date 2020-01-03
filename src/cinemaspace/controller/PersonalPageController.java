@@ -46,9 +46,9 @@ public class PersonalPageController {
 	//Parameter
 	private User user;
 	private List<Film> listOfFilmsGenres;
-	private List<String> listOfFilmsTitlesGenres;
+	private List<String> listOfFilmsIdGenres;
 	private List<Film> listOfFilmsUsers;
-	private List<String> listOfFilmsTitlesUsers;
+	private List<String> listOfFilmsIdUsers;
 	
 	//Previous and Next number of pages parameters - Genres
 	private int actualPageGenres;
@@ -926,10 +926,10 @@ public class PersonalPageController {
 	}
 	
 	public void initListOfFilmsGenres(User user) {
-		this.listOfFilmsTitlesGenres = CinemaSpaceArchive.requestFilmRecommendationsBasedOnGenre(user);
-		if(this.listOfFilmsTitlesGenres != null) {
+		this.listOfFilmsIdGenres = CinemaSpaceArchive.requestFilmRecommendationsBasedOnGenre(user);
+		if(this.listOfFilmsIdGenres != null) {
 			this.listOfFilmsGenres = new ArrayList<Film>();
-			for(String filmId : this.listOfFilmsTitlesGenres) {
+			for(String filmId : this.listOfFilmsIdGenres) {
 				this.listOfFilmsGenres.add(CinemaSpaceArchive.getFilm(new ObjectId(new String(filmId.substring(1, filmId.length()-1)))));
 			}
 			if(this.listOfFilmsGenres != null) {
@@ -959,10 +959,10 @@ public class PersonalPageController {
 	}
 	
 	public void initListOfFilmsUsers(User user) {
-		this.listOfFilmsTitlesUsers = CinemaSpaceArchive.requestFilmRecommendationsBasedOnOtherUsersWithCommonInterests(user);
-		if(this.listOfFilmsTitlesUsers != null) {
+		this.listOfFilmsIdUsers = CinemaSpaceArchive.requestFilmRecommendationsBasedOnOtherUsersWithCommonInterests(user);
+		if(this.listOfFilmsIdUsers != null) {
 			this.listOfFilmsUsers = new ArrayList<Film>();
-			for(String filmId : this.listOfFilmsTitlesUsers) {
+			for(String filmId : this.listOfFilmsIdUsers) {
 				this.listOfFilmsUsers.add(CinemaSpaceArchive.getFilm(new ObjectId(filmId.substring(1, filmId.length()-1))));
 			}
 			if(this.listOfFilmsUsers != null) {
