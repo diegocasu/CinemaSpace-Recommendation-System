@@ -585,7 +585,7 @@ public class CinemaSpaceMainArchive {
 
 	public List<ObjectId> addFilms(List<Film> films) {
 		MongoCollection<Document> filmCollection = cinemaSpaceDatabase.getCollection("Film");
-		List<ObjectId> newFilmIds = null;
+		List<ObjectId> newFilmIds = new ArrayList<>();
 		
 		List<Document> newFilms = generateListOfFilmDocuments(films);
 
