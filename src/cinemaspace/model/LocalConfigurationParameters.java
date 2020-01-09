@@ -46,21 +46,12 @@ public class LocalConfigurationParameters {
     }
     
     private static void setMainArchiveConnectionString(Document configurationDocument) {
-        NodeList replicaSet = configurationDocument.getElementsByTagName("replica");
-        String replicaName = configurationDocument.getElementsByTagName("replicaName").item(0).getTextContent();
+    	NodeList mainArchiveNode = configurationDocument.getElementsByTagName("mainArchive");
+    	Element mainArchiveParameters = (Element) mainArchiveNode.item(0);
         
-        List<String> replicasAddress = new ArrayList<String>();
-        
-        for (int i = 0; i < replicaSet.getLength(); i++) {
-          Element replica = (Element) replicaSet.item(i);
-          String addressDBMS = replica.getElementsByTagName("addressDBMS").item(0).getTextContent();
-          String portDBMS = replica.getElementsByTagName("portDBMS").item(0).getTextContent();
-          
-          replicasAddress.add(addressDBMS + ":" + portDBMS);
-        }
- 
-        mainArchiveConnectionString += String.join(",", replicasAddress);
-        mainArchiveConnectionString += "/?replicaSet=" + replicaName;
+    	mainArchiveConnectionString = mainArchiveParameters.getElementsByTagName("addressDBMS").item(0).getTextContent() +
+										":" +
+										mainArchiveParameters.getElementsByTagName("portDBMS").item(0).getTextContent();	
     }
     
     private static void setRecommendationArchiveConnectionString(Document configurationDocument) {

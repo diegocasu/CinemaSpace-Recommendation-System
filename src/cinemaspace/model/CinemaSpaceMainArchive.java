@@ -215,15 +215,8 @@ public class CinemaSpaceMainArchive {
 	
  	public void openConnection(String connectionString) {
  		databaseAddress += connectionString;
- 		
- 		Builder connectionSettingsBuilder = MongoClientSettings.builder();
- 		connectionSettingsBuilder.readPreference(ReadPreference.primaryPreferred());
- 		connectionSettingsBuilder.readConcern(ReadConcern.LOCAL);
- 		connectionSettingsBuilder.writeConcern(new WriteConcern(1));
- 		connectionSettingsBuilder.applyConnectionString(new ConnectionString(databaseAddress));
- 		MongoClientSettings connectionOptions = connectionSettingsBuilder.build();
  					
-		clientConnection = MongoClients.create(connectionOptions);
+		clientConnection = MongoClients.create(databaseAddress);
 		cinemaSpaceDatabase = clientConnection.getDatabase("CinemaSpace");
 	}
 	
